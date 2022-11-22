@@ -1,0 +1,9 @@
+{
+  "name": "dguide-tour-viewer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AsafKaravani/dguide-tour-viewer.git",
+  "author": "Assaf Koren <assafnoahkoren@gmail.com>",
+  "license": "MIT",
+  "packageManager": "yarn@3.1.1"
+}
