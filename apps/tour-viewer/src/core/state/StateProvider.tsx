@@ -1,3 +1,12 @@
-export function StateProvider(props) {
-  return <h1>Hello, {props.name}</h1>
-}
+type StateProviderProps = {
+  children?: React.ReactNode;
+};
+
+export const StateProvider: React.FC<StateProviderProps> = _p => {
+  return (
+    <div>
+      <p>State provider works.</p>
+      {_p.children}
+    </div>
+  );
+};
