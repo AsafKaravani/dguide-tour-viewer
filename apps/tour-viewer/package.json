@@ -7,6 +7,7 @@
 		"build": "tsc && vite build",
 		"dev": "vite",
 		"lint": "eslint . --ext .ts,.tsx",
+		"prettier": "prettier --write .",
 		"lint-and-fix": "eslint . --ext .ts,.tsx --fix",
 		"plop": "plop",
 		"preview": "vite preview"
