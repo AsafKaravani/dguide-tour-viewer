@@ -1,3 +1,5 @@
+import React from "react";
+
 type StateProviderProps = {
   children?: React.ReactNode;
 };

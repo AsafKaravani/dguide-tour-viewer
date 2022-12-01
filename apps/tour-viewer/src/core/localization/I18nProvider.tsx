@@ -1,3 +1,5 @@
+import React from "react";
+
 type I18nProviderProps = {
   children?: React.ReactNode;
 };

@@ -1,3 +1,4 @@
+import React from "react";
 import { I18nProvider } from "./localization/I18nProvider";
 import { StateProvider } from "./state/StateProvider";
 import { AppThemeProvider } from "./theme/ThemeProvider";
