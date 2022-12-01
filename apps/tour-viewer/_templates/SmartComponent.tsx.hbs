@@ -1,12 +1,11 @@
 type {{pascalCase name}}Props = {
-  title: string;
   children?: React.ReactNode;
 };
 
 export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = _p => {
   return (
     <div>
-      <p>{_p.title}</p>
+      <p>{{setenceCase name}} works.</p>
       {_p.children}
     </div>
   );
