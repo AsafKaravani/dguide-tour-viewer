@@ -1,3 +1,13 @@
-export function {{pascalCase name}}(props) {
-  return <h1>Hello, {props.name}</h1>
-}
+type {{pascalCase name}}Props = {
+  title: string;
+  children?: React.ReactNode;
+};
+
+export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = _p => {
+  return (
+    <div>
+      <p>{_p.title}</p>
+      {_p.children}
+    </div>
+  );
+};
