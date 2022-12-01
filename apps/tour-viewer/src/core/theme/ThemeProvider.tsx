@@ -7,6 +7,11 @@ type ThemeProviderProps = {
 
 const theme = createTheme({
   shadows: Array(25).fill("none") as Shadows,
+  palette: {
+    primary: {
+      main: '#E14A1B'
+    }
+  }
 });
 
 export const AppThemeProvider: React.FC<ThemeProviderProps> = _p => {

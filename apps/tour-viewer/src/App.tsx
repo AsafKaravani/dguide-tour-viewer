@@ -11,7 +11,8 @@ function App() {
   return (
     <div className="App">
       <GlobalProviders>
-        <Button variant='contained'> asd</Button>
+        <Button variant='contained' color='error'> asd</Button>
+        <Button variant='contained' > asd</Button>
         <Typography variant='body1'>
           asd
         </Typography>

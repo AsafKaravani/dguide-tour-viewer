@@ -8,9 +8,9 @@ type GlobalProvidersProps = {
 
 export const GlobalProviders: React.FC<GlobalProvidersProps> = _p => {
   return (
-    <AppThemeProvider>
-      <I18nProvider>
-        <StateProvider>
+    <AppThemeProvider>    {/** 🎨 Theme Layer */}
+      <I18nProvider>      {/** 🌎 I18n Layer */}
+        <StateProvider>   {/** 🧠 State Layer */}
           {_p.children}
         </StateProvider>
       </I18nProvider>
