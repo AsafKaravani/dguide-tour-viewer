@@ -1,13 +1,9 @@
-import React from "react";
+import React from 'react';
 
 type StateProviderProps = {
-  children?: React.ReactNode;
+	children?: React.ReactNode;
 };
 
-export const StateProvider: React.FC<StateProviderProps> = _p => {
-  return (
-    <div>
-      {_p.children}
-    </div>
-  );
+export const StateProvider: React.FC<StateProviderProps> = (_p) => {
+	return <div>{_p.children}</div>;
 };

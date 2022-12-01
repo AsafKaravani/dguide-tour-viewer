@@ -1,36 +1,36 @@
 {
-  "name": "tour-viewer",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "plop": "plop",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint-and-fix": "eslint . --ext .ts,.tsx --fix"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.10.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.24",
-    "@types/react-dom": "^18.0.8",
-    "@typescript-eslint/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "latest",
-    "@vitejs/plugin-react": "^2.2.0",
-    "eslint": "latest",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-react": "latest",
-    "plop": "^3.1.1",
-    "prettier": "2.8.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.2.3",
-    "vite-tsconfig-paths": "^3.6.0"
-  }
+	"name": "tour-viewer",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "tsc && vite build",
+		"dev": "vite",
+		"lint": "eslint . --ext .ts,.tsx",
+		"lint-and-fix": "eslint . --ext .ts,.tsx --fix",
+		"plop": "plop",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@emotion/react": "^11.10.5",
+		"@emotion/styled": "^11.10.5",
+		"@mui/material": "^5.10.16",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.24",
+		"@types/react-dom": "^18.0.8",
+		"@typescript-eslint/eslint-plugin": "latest",
+		"@typescript-eslint/parser": "latest",
+		"@vitejs/plugin-react": "^2.2.0",
+		"eslint": "latest",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-react": "latest",
+		"plop": "^3.1.1",
+		"prettier": "2.8.0",
+		"typescript": "^4.6.4",
+		"vite": "^3.2.3",
+		"vite-tsconfig-paths": "^3.6.0"
+	}
 }
