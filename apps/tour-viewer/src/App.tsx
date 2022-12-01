@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { GlobalProviders } from '@core/GlobalProviders'
+import { Button, Typography } from '@mui/material'
 
 
 function App() {
@@ -10,9 +11,15 @@ function App() {
   return (
     <div className="App">
       <GlobalProviders>
-
+        <Button variant='contained'> asd</Button>
+        <Typography variant='body1'>
+          asd
+        </Typography>
+        <Typography variant='caption'>
+          asd
+        </Typography>
       </GlobalProviders>
-    </div>
+    </div >
   )
 }
 

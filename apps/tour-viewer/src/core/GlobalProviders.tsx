@@ -1,6 +1,6 @@
 import { I18nProvider } from "./localization/I18nProvider";
 import { StateProvider } from "./state/StateProvider";
-import { ThemeProvider } from "./theme/ThemeProvider";
+import { AppThemeProvider } from "./theme/ThemeProvider";
 
 type GlobalProvidersProps = {
   children?: React.ReactNode;
@@ -8,12 +8,12 @@ type GlobalProvidersProps = {
 
 export const GlobalProviders: React.FC<GlobalProvidersProps> = _p => {
   return (
-    <ThemeProvider>
+    <AppThemeProvider>
       <I18nProvider>
         <StateProvider>
           {_p.children}
         </StateProvider>
       </I18nProvider>
-    </ThemeProvider>
+    </AppThemeProvider>
   );
 };

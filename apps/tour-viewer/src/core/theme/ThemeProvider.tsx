@@ -1,12 +1,19 @@
+import { createTheme, Shadows, ThemeProvider } from "@mui/material";
+import * as colors from "@mui/material/colors";
+
 type ThemeProviderProps = {
   children?: React.ReactNode;
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = _p => {
+const theme = createTheme({
+  shadows: Array(25).fill("none") as Shadows,
+});
+
+export const AppThemeProvider: React.FC<ThemeProviderProps> = _p => {
   return (
-    <div>
-      <p>Theme provider works.</p>
+    <ThemeProvider theme={theme}>
       {_p.children}
-    </div>
+    </ThemeProvider>
   );
 };
+
