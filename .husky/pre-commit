@@ -3,4 +3,4 @@
 
 echo works
 cd apps/tour-viewer
-yarn lint-and-fix
+yarn lint-staged
