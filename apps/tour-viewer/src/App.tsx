@@ -4,7 +4,8 @@ import { Button, Typography } from '@mui/material';
 
 function App() {
 	const [first, setFirst] = useState();
-	
+	const [first, setFirst] = useState();
+
 	return (
 		<div className="App">
 			<GlobalProviders>
