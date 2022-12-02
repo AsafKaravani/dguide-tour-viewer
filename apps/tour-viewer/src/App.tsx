@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { GlobalProviders } from '@core/GlobalProviders';
+import React from 'react';
+import { GlobalProviders } from '@app/core/GlobalProviders';
 import { Button, Typography } from '@mui/material';
 
 function App() {
-	const [first, setFirst] = useState();
-	const [first, setFirst] = useState();
-
 	return (
 		<div className="App">
 			<GlobalProviders>
 				<Button variant="contained" color="error">
-					asdp{x}
+					asdp
 				</Button>
 				<Button variant="contained"> asd</Button>
 				<Typography variant="body1">asd</Typography>

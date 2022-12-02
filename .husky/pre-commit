@@ -2,4 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 cd apps/tour-viewer
+yarn tsc
 yarn lint-and-fix
