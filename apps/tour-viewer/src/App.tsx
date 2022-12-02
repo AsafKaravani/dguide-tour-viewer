@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GlobalProviders } from '@core/GlobalProviders';
 import { Button, Typography } from '@mui/material';
 
 function App() {
+	const [first, setFirst] = useState();
+	
 	return (
 		<div className="App">
 			<GlobalProviders>
