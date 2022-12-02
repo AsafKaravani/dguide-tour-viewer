@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo works
+cd apps/tour-viewer
+yarn lint-and-fix
