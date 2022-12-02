@@ -10,8 +10,7 @@ function App() {
 		<div className="App">
 			<GlobalProviders>
 				<Button variant="contained" color="error">
-					{' '}
-					asd
+					asdp{x}
 				</Button>
 				<Button variant="contained"> asd</Button>
 				<Typography variant="body1">asd</Typography>
