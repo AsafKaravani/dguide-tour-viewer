@@ -1,4 +1,6 @@
 import React from 'react';
+import { Box, Typography, TextField } from '@mui/material';
+import { useGlobalHooks } from '@app/core/hooks/global-hooks';
 
 type HeaderProps = {
 	children?: React.ReactNode;
@@ -6,14 +8,16 @@ type HeaderProps = {
 
 export const Header: React.FC<HeaderProps> =
 	React.memo(
-		React.forwardRef<HTMLDivElement, HeaderProps>(
-			function Header(_p, ref) {
-				return (
-					<div ref={ref}>
-						<p>Header works.</p>
-						{_p.children}
-					</div>
-				);
-			}
-		)
+		function Header(_p) {
+			const _g = useGlobalHooks();
+
+			return (
+				<Box sx={{ background: _g.theme.palette.primary.main }}>
+					<Typography>
+						asd
+					</Typography>
+					{_p.children}
+				</Box>
+			);
+		}
 	);

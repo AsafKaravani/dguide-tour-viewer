@@ -10,8 +10,11 @@ const theme = createTheme({
 	shadows: Array(25).fill('none') as Shadows,
 	palette: {
 		primary: {
-			main: '#E14A1B',
+			main: '#F19A36',
 		},
+		secondary: {
+			main: '#101639',
+		}
 	},
 });
 
