@@ -25,7 +25,7 @@ export const TourChip =
 						}}>
 							<i className={`fa-${_p.iconType} fa-${_p.iconName}`}></i>
 						</Box>
-						<Typography variant='body2 ' className="flex items-center">
+						<Typography variant='body2' className="flex items-center">
 							{_p.children}
 						</Typography>
 					</Box>

@@ -1,5 +1,6 @@
 @import url(./reset.css);
 @import url(./assets/fonts/index.css);
+@import url(./assets/fontawesome/css/all.min.css);
 
 @tailwind base;
 @tailwind components;

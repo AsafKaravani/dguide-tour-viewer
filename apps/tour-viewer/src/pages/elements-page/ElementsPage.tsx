@@ -1,6 +1,7 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { Seperator } from '@app/shared/components';
+import React, { useEffect, useState } from 'react';
+import { Box, Button, Fab, Link, Typography } from '@mui/material';
+import { Seperator, StopCard, TourChip } from '@app/shared/components';
+import { useGlobalHooks } from '@app/core/hooks/global-hooks';
 
 type ElementsPageProps = {
 	children?: React.ReactNode;
@@ -9,10 +10,29 @@ type ElementsPageProps = {
 export const ElementsPage: React.FC<ElementsPageProps> =
 	React.memo(
 		function ElementsPage() {
+			const _g = useGlobalHooks();
+			const [rtl, setRtl] = useState(false);
+
+			useEffect(() => {
+				document.dir = rtl ? 'rtl' : 'ltr';
+			}, [rtl])
+
 			return (
-				<Box className='flex flex-col p-4'>
+				<Box className='flex flex-col p-4 mb-12'>
+					<Typography variant='h2' color={_g.theme.palette.primary.main}>
+						Elements page
+					</Typography>
+					<Typography variant='caption' className='mb-4'>
+						This page is for viewing all the components made for this project.
+					</Typography>
+
+					<Fab variant="extended" color="primary" className='fixed bottom-4 right-4 w-0'
+						onClick={() => setRtl(!rtl)}>
+						{rtl ? 'RTL' : 'LTR'}
+					</Fab>
+
 					<Typography variant='caption'>
-						h1
+						H1
 					</Typography>
 					<Typography variant='h1'>
 						Jerusalem of three religions
@@ -20,7 +40,15 @@ export const ElementsPage: React.FC<ElementsPageProps> =
 					<Seperator />
 
 					<Typography variant='caption'>
-						body1
+						H2
+					</Typography>
+					<Typography variant='h2'>
+						Jerusalem of three religions
+					</Typography>
+					<Seperator />
+
+					<Typography variant='caption'>
+						Body1
 					</Typography>
 					<Typography variant='body1'>
 						Raphael Purro
@@ -28,7 +56,7 @@ export const ElementsPage: React.FC<ElementsPageProps> =
 					<Seperator />
 
 					<Typography variant='caption'>
-						body2
+						Body2
 					</Typography>
 					<Typography variant='body2'>
 						consectetur adipiscing elit. At dolor tellus dolor facilisis odio non dignissim.
@@ -36,7 +64,7 @@ export const ElementsPage: React.FC<ElementsPageProps> =
 					<Seperator />
 
 					<Typography variant='caption'>
-						caption
+						Caption
 					</Typography>
 					<Typography variant='caption'>
 						Your guide
@@ -44,13 +72,55 @@ export const ElementsPage: React.FC<ElementsPageProps> =
 					<Seperator />
 
 					<Typography variant='caption'>
-						button
+						Link
+					</Typography>
+					<Link href="#">Electricity Garden Parking...</Link>
+					<Seperator />
+
+					<Typography variant='caption'>
+						button text
 					</Typography>
 					<Typography variant='button'>
 						Get Started
 					</Typography>
 					<Seperator />
-				</Box>
+
+					<Typography variant='caption'>
+						Button
+					</Typography>
+					<Button className='mb-4'>
+						Primary Color
+					</Button>
+					<Button color='secondary'>
+						Secondary Color
+					</Button>
+					<Seperator />
+
+					<Typography variant='caption'>
+						Chip
+					</Typography>
+					<Box className='flex gap-4'>
+						<TourChip iconType='solid' iconName='clock'>
+							3-4 Hours
+						</TourChip>
+						<TourChip iconType='solid' iconName='battery-bolt fa-rotate-270'>
+							Full Battery
+						</TourChip>
+						<TourChip iconType='brands' iconName='waze'>
+							Waze
+						</TourChip>
+					</Box>
+					<Seperator />
+
+					<Typography variant='caption'>
+						Stop card
+					</Typography>
+					<StopCard
+						title='House of Simon the Tanner'
+						categories={['Historic']} />
+					<Seperator />
+
+				</Box >
 			);
 		}
 	);

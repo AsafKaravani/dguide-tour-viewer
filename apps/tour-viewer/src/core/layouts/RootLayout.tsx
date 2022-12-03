@@ -14,7 +14,7 @@ export const RootLayout: React.FC<RootLayoutProps> =
 			<RtlLayer>
 				<Box className='h-screen flex flex-col bg-slate-100'>
 					{/* <Header /> */}
-					<Box className='flex-1'>
+					<Box className='flex-1 overflow-auto'>
 						<Outlet />
 					</Box>
 				</Box>

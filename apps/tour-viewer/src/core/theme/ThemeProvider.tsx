@@ -10,10 +10,10 @@ const theme = createTheme({
 	shadows: Array(25).fill('none') as Shadows,
 	palette: {
 		primary: {
-			main: '#F19A36',
+			main: '#E14A1B',
 		},
 		secondary: {
-			main: '#101639',
+			main: '#121A3E',
 		},
 	},
 	typography: {
@@ -22,8 +22,12 @@ const theme = createTheme({
 			color: '#3C3A36',
 		},
 		h1: {
-			fontSize: '35px',
+			fontSize: 35,
 			fontWeight: 400
+		},
+		h2: {
+			fontSize: 20,
+			fontWeight: 500
 		},
 		caption: {
 			fontSize: 12,
@@ -41,7 +45,29 @@ const theme = createTheme({
 		button: {
 			fontSize: 16,
 			fontWeight: 500,
-			textTransform: 'none'
+			textTransform: 'none',
+			lineHeight: '20x'
+		},
+	},
+	components: {
+		MuiButton: {
+			defaultProps: {
+				variant: 'contained',
+			},
+			styleOverrides: {
+				root: () => ({
+					borderRadius: 99999,
+					padding: '12px 32px'
+				})
+			}
+		},
+		MuiLink: {
+			styleOverrides: {
+				root: () => ({
+					fontSize: 12,
+					fontWeight: 500,
+				})
+			}
 		}
 	}
 });
