@@ -14,8 +14,36 @@ const theme = createTheme({
 		},
 		secondary: {
 			main: '#101639',
-		}
+		},
 	},
+	typography: {
+		allVariants: {
+			fontFamily: 'rubik',
+			color: '#3C3A36',
+		},
+		h1: {
+			fontSize: '35px',
+			fontWeight: 400
+		},
+		caption: {
+			fontSize: 12,
+			fontWeight: 500,
+			color: '#858585'
+		},
+		body1: {
+			fontSize: 15,
+			fontWeight: 500
+		},
+		body2: {
+			fontSize: 14,
+			fontWeight: 400
+		},
+		button: {
+			fontSize: 16,
+			fontWeight: 500,
+			textTransform: 'none'
+		}
+	}
 });
 
 
