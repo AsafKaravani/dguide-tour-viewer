@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Fab, Link, Typography } from '@mui/material';
-import { Seperator, StopCard, TourChip } from '@app/shared/components';
+import { Seperator, StopCard, TourChip, TourPin } from '@app/shared/components';
 import { useGlobalHooks } from '@app/core/hooks/global-hooks';
 
 type ElementsPageProps = {
@@ -118,6 +118,25 @@ export const ElementsPage: React.FC<ElementsPageProps> =
 					<StopCard
 						title='House of Simon the Tanner'
 						categories={['Historic']} />
+					<Seperator />
+
+					<Typography className='mb-4' variant='caption'>
+						Tour pin
+					</Typography>
+					<Box className='flex gap-4'>
+						<TourPin size={40} active>
+							1
+						</TourPin>
+						<TourPin size={40}>
+							2
+						</TourPin>
+						<TourPin size={40}>
+							<i className='fa-solid fa-store' />
+						</TourPin>
+						<TourPin size={40}>
+							<i className='fa-regular fa-lightbulb' style={{ fontSize: '1.5em', position: 'relative', top: 2 }} />
+						</TourPin>
+					</Box>
 					<Seperator />
 
 				</Box >
