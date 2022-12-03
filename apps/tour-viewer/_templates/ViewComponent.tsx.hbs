@@ -1,14 +1,19 @@
 import React from 'react';
 
 type {{pascalCase name}}Props = {
-  children?: React.ReactNode;
+	children?: React.ReactNode;
 };
 
-export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = React.forwardRef<HTMLDivElement, {{pascalCase name}}Props>((_p, ref) => {
-  return (
-    <div ref={ref}>
-      <p>{{sentenceCase name}} works.</p>
-      {_p.children}
-    </div>
-  );
-});
+export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> =
+	React.memo(
+		React.forwardRef<HTMLDivElement, {{pascalCase name}}Props>(
+			function {{pascalCase name}}(_p, ref) {
+				return (
+					<div ref={ref}>
+						<p>{{sentenceCase name}} works.</p>
+						{_p.children}
+					</div>
+				);
+			}
+		)
+	);

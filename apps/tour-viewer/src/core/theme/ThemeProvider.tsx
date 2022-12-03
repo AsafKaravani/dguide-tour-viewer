@@ -15,6 +15,7 @@ const theme = createTheme({
 	},
 });
 
+
 export const AppThemeProvider: React.FC<ThemeProviderProps> = (_p) => {
 	return <ThemeProvider theme={theme}>{_p.children}</ThemeProvider>;
 };

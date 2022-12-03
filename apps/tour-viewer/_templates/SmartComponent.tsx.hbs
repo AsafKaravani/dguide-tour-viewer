@@ -1,14 +1,15 @@
 import React from 'react';
 
 type {{pascalCase name}}Props = {
-  children?: React.ReactNode;
+	children?: React.ReactNode;
 };
 
-export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = _p => {
-  return (
-    <div>
-      <p>{{sentenceCase name}} works.</p>
-      {_p.children}
-    </div>
-  );
-};
+export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> =
+	React.memo(function {{pascalCase name}}(_p) {
+		return (
+			<div>
+				<p>{{sentenceCase name}} works.</p>
+				{_p.children}
+			</div>
+		);
+	});
