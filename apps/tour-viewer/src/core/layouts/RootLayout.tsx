@@ -13,10 +13,9 @@ export const RootLayout: React.FC<RootLayoutProps> =
 		return (
 			<RtlLayer>
 				<Box className='h-screen flex flex-col bg-slate-100'>
-					<Header />
+					{/* <Header /> */}
 					<Box className='flex-1'>
-						asdasd
-						<TextField id="standard-basic" label="Standard" variant="standard" />
+						<Outlet />
 					</Box>
 				</Box>
 			</RtlLayer>
