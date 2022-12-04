@@ -1,7 +1,8 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from '@app/core/layouts/RootLayout';
-import { ElementsPage } from '../../pages/elements-page/ElementsPage';
+import { ElementsPage } from '@app/pages/elements-page/ElementsPage';
+import { TourStartPage } from '@app/pages/tour-start-page/TourStartPage';
 
 
 type RoutingLayerProps = {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
 			{
 				path: 'elements',
 				element: <ElementsPage />,
+			},
+			{
+				path: 'tour',
+				element: <TourStartPage />,
 			},
 		],
 	},

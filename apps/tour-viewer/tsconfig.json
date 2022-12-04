@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@app/core/*": ["src/core/*"],
-      "@app/shared/*": ["src/shared/*"]
+      "@app/shared/*": ["src/shared/*"],
+      "@app/pages/*": ["src/pages/*"]
     }
   },
   "include": ["src"],

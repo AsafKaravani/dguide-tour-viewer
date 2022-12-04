@@ -2362,6 +2362,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-no-relative-import-paths@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "eslint-plugin-no-relative-import-paths@npm:1.5.0"
+  checksum: 812fb801b4bfe4bd93199cd9eae572ae356009cf2421f4553902421167f31ed47527eee2482ab350241fcef9256f3ecc717ac0cdf709347e7893107285727d2a
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react@npm:latest":
   version: 7.31.11
   resolution: "eslint-plugin-react@npm:7.31.11"
@@ -5593,6 +5600,7 @@ __metadata:
     "@vitejs/plugin-react": ^2.2.0
     autoprefixer: ^10.4.13
     eslint: latest
+    eslint-plugin-no-relative-import-paths: ^1.5.0
     eslint-plugin-react: latest
     lint-staged: ^13.0.4
     plop: ^3.1.1

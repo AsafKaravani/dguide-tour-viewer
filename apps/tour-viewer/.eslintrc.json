@@ -10,10 +10,11 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "no-relative-import-paths"],
   "rules": {
     "indent": ["error", "tab"],
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": true }]
   },
   "settings": {
     "react": {
