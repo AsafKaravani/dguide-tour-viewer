@@ -1,11 +1,6 @@
 import React from 'react';
 import { Box, BoxProps } from '@mui/material';
 import { useGlobalHooks } from '@app/core/hooks/global-hooks';
-import locaitonPin from '../../svgs/locaiton-pin.svg';
-
-
-console.log(locaitonPin);
-
 
 type TourPinProps = {
 	size: number;
