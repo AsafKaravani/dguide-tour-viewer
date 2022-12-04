@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, BoxProps, Typography, Link, Button } from '@mui/material';
 import { Seperator, TourChip, UserBlock } from '@app/shared/components';
+import ReactPlayer from 'react-player'
 
 type TourStartPageProps = {
 	children?: React.ReactNode;
@@ -13,7 +14,7 @@ export const TourStartPage =
 				return (
 					<Box ref={ref} {..._p}>
 						<Box className='flex items-center justify-center h-52 bg-white'>
-							Video Player Placeholder
+							<ReactPlayer height='100%' url='/videos/sample-video.mp4' controls />
 						</Box>
 						<Box className='p-4'>
 
