@@ -6,7 +6,7 @@ type ThemeProviderProps = {
 	children?: React.ReactNode;
 };
 
-const theme = createTheme({
+export const brandTheme = createTheme({
 	shadows: Array(25).fill('none') as Shadows,
 	palette: {
 		primary: {
@@ -74,5 +74,5 @@ const theme = createTheme({
 
 
 export const AppThemeProvider: React.FC<ThemeProviderProps> = (_p) => {
-	return <ThemeProvider theme={theme}>{_p.children}</ThemeProvider>;
+	return <ThemeProvider theme={brandTheme}>{_p.children}</ThemeProvider>;
 };
