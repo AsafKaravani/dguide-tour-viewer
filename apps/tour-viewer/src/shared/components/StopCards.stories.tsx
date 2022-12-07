@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StopCard } from './StopCard';
+import { StopCard } from '@app/shared/components/StopCard';
 
 
 export default {

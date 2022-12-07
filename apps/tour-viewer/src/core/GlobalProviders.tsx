@@ -1,7 +1,7 @@
 import React from 'react';
-import { I18nProvider } from './localization/I18nProvider';
-import { StateProvider } from './state/StateProvider';
-import { AppThemeProvider } from './theme/ThemeProvider';
+import { I18nProvider } from '@app/core/localization/I18nProvider';
+import { StateProvider } from '@app/core/state/StateProvider';
+import { AppThemeProvider } from '@app/core/theme/ThemeProvider';
 
 type GlobalProvidersProps = {
 	children?: React.ReactNode;

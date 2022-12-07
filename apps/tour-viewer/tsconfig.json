@@ -19,7 +19,8 @@
     "paths": {
       "@app/core/*": ["src/core/*"],
       "@app/shared/*": ["src/shared/*"],
-      "@app/pages/*": ["src/pages/*"]
+      "@app/pages/*": ["src/pages/*"],
+      "@app/*": ["src/*"]
     }
   },
   "include": ["src"],
