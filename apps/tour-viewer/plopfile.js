@@ -35,7 +35,7 @@ export default function (plop) {
 		actions: [
 			{
 				type: 'add',
-				path: 'src/{{pascalCase name}}.tsx',
+				path: 'src/{{kebabCase name}}/{{pascalCase name}}.tsx',
 				templateFile: '_templates/SmartComponent.tsx.hbs',
 			},
 		],

@@ -4,8 +4,8 @@ type {{pascalCase name}}Props = {
 	children?: React.ReactNode;
 };
 
-export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> =
-	React.memo(function {{pascalCase name}}(_p) {
+export const {{pascalCase name}}: React.FC =	React.memo<{{pascalCase name}}Props>(
+	function {{pascalCase name}}(_p) {
 		return (
 			<div>
 				<p>{{sentenceCase name}} works.</p>

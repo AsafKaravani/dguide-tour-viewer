@@ -2395,6 +2395,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-leaflet/core@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@react-leaflet/core@npm:2.1.0"
+  peerDependencies:
+    leaflet: ^1.9.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: c11a15fb71a9929b809f346d8f784d0f32afa373bc096aa1f0d0fa6a2ef0ce632a563c31876abf8b255a12a19d6e80ece31e2ef505f79a678bbf073e7a6c5c60
+  languageName: node
+  linkType: hard
+
 "@remix-run/router@npm:1.0.4":
   version: 1.0.4
   resolution: "@remix-run/router@npm:1.0.4"
@@ -3733,6 +3744,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/geojson@npm:*":
+  version: 7946.0.10
+  resolution: "@types/geojson@npm:7946.0.10"
+  checksum: 12c407c2dc93ecb26c08af533ee732f1506a9b29456616ba7ba1d525df96206c28ddf44a528f6a5415d7d22893e9d967420940a9c095ee5e539c1eba5fefc1f4
+  languageName: node
+  linkType: hard
+
 "@types/glob@npm:*":
   version: 8.0.0
   resolution: "@types/glob@npm:8.0.0"
@@ -3823,6 +3841,15 @@ __metadata:
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
   checksum: 527bddfe62db9012fccd7627794bd4c71beb77601861055d87e3ee464f2217c85fca7a4b56ae677478367bbd248dbde13553312b7d4dbc702a2f2bbf60c4018d
+  languageName: node
+  linkType: hard
+
+"@types/leaflet@npm:^1.9.0":
+  version: 1.9.0
+  resolution: "@types/leaflet@npm:1.9.0"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: f3ee2e2fc8bd3480d77667471c8f774a3726ff7694a7d08d2423c05b40e28f00379c7d469b4cbd3b53a1bc96c75970c92f9da7908fc477cbac0eda2a9d17b6ad
   languageName: node
   linkType: hard
 
@@ -9738,6 +9765,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"idb@npm:^6.1.4":
+  version: 6.1.5
+  resolution: "idb@npm:6.1.5"
+  checksum: 45d81be3bf5d5ae6d009d62b4a7eeb873fe2a9972d235aaa5c33cd3e27947b33a01fd3fb7bbdbe795cd608d2279c55ccd2db3f8b3f486bc74bdb5eab1c1be957
+  languageName: node
+  linkType: hard
+
 "ieee754@npm:^1.1.13, ieee754@npm:^1.1.4, ieee754@npm:^1.2.1":
   version: 1.2.1
   resolution: "ieee754@npm:1.2.1"
@@ -10905,6 +10939,25 @@ __metadata:
     dotenv: ^8.0.0
     dotenv-expand: ^5.1.0
   checksum: a80509d8cb40dafcfab5859335920754a21814320aa16115e58c0ae5ef3b1d8bd4daa96349ea548e2833f2f89269ddbb103ebd55be06cfdba00e0af6785b5ba7
+  languageName: node
+  linkType: hard
+
+"leaflet.offline@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "leaflet.offline@npm:2.2.0"
+  dependencies:
+    idb: ^6.1.4
+  peerDependencies:
+    idb: ^6.1.4
+    leaflet: ^1.6.0
+  checksum: 1019b7464514c04ee97f9879c02d3eb7b62cf5a5ac45ccdd9d2ffe25ad05c387f5f2baffd2605038dd8ca1e39afdc60d3e0424449dff653869d133fa354e30b8
+  languageName: node
+  linkType: hard
+
+"leaflet@npm:^1.9.3":
+  version: 1.9.3
+  resolution: "leaflet@npm:1.9.3"
+  checksum: f8bc33215e6aed8488cb3d32511b943ff093c1747bcda8a39116e24fe714e12525f1a6843b6a79940ece4cf8d2a86e2cb1d7b80fc550344b3182659b19231a04
   languageName: node
   linkType: hard
 
@@ -13570,6 +13623,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-leaflet@npm:4.2.0":
+  version: 4.2.0
+  resolution: "react-leaflet@npm:4.2.0"
+  dependencies:
+    "@react-leaflet/core": ^2.1.0
+  peerDependencies:
+    leaflet: ^1.9.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: da6351ac89c110039d1e9e72888e7c8c04982a87c0e48c1a2eafc689b52e88e95cc74f7e621eddab7d2de1f4979ad34c3bc74483d60ef44b0ef89f67ee237d1a
+  languageName: node
+  linkType: hard
+
 "react-merge-refs@npm:^1.0.0":
   version: 1.1.0
   resolution: "react-merge-refs@npm:1.1.0"
@@ -15646,6 +15712,7 @@ __metadata:
     "@storybook/builder-vite": ^0.2.5
     "@storybook/react": ^6.5.14
     "@storybook/testing-library": ^0.0.13
+    "@types/leaflet": ^1.9.0
     "@types/react": ^18.0.24
     "@types/react-dom": ^18.0.8
     "@types/stylis": ^4.0.2
@@ -15658,11 +15725,14 @@ __metadata:
     eslint-plugin-no-relative-import-paths: ^1.5.0
     eslint-plugin-react: latest
     eslint-plugin-storybook: ^0.6.8
+    leaflet: ^1.9.3
+    leaflet.offline: ^2.2.0
     lint-staged: ^13.0.4
     plop: ^3.1.1
     postcss: ^8.4.19
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-leaflet: 4.2.0
     react-player: ^2.11.0
     react-router-dom: ^6.4.4
     storybook-dark-mode: ^2.0.3

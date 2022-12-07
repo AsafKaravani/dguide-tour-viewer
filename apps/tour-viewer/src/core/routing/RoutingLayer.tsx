@@ -1,8 +1,9 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom';
 import { RootLayout } from '@app/core/layouts/RootLayout';
 import { ElementsPage } from '@app/pages/elements-page/ElementsPage';
 import { TourStartPage } from '@app/pages/tour-start-page/TourStartPage';
+import { MapPage } from '@app/pages/map-page/MapPage';
 
 
 type RoutingLayerProps = {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
 		element: <RootLayout />,
 		errorElement: <>404 Not Found</>,
 		children: [
+			{
+				path: '/',
+				element: <MapPage />,
+			},
 			{
 				path: 'elements',
 				element: <ElementsPage />,
