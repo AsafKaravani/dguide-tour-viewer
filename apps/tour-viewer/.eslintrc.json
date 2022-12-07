@@ -14,7 +14,7 @@
   "rules": {
     "indent": ["error", "tab"],
     "quotes": ["error", "single"],
-    "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": true }]
+    "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": false }]
   },
   "settings": {
     "react": {
