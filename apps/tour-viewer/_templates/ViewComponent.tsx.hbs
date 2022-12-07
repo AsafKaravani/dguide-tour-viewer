@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box, BoxProps } from '@mui/material';
 
-type {{pascalCase name}}Props = {
+export type {{pascalCase name}}Props = {
 	children?: React.ReactNode;
-} & BoxProps;
+};
 
 export const {{pascalCase name}} =
 	React.memo(
-		React.forwardRef<BoxProps, {{pascalCase name}}Props>(
+		React.forwardRef<BoxProps, {{pascalCase name}}Props & BoxProps>(
 			function {{pascalCase name}}(_p, ref) {
 				return (
 					<Box ref={ref} {..._p}>

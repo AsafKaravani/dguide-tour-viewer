@@ -12,8 +12,13 @@ export default function (plop) {
 		actions: [
 			{
 				type: 'add',
-				path: 'src/{{pascalCase name}}.tsx',
+				path: 'src/{{kebabCase name}}/{{pascalCase name}}.tsx',
 				templateFile: '_templates/ViewComponent.tsx.hbs',
+			},
+			{
+				type: 'add',
+				path: 'src/{{kebabCase name}}/{{pascalCase name}}.stories.tsx',
+				templateFile: '_templates/ViewComponent.stories.tsx.hbs',
 			},
 		],
 	});

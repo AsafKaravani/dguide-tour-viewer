@@ -1,15 +1,15 @@
 import React from 'react';
 import { Box, BoxProps, Typography } from '@mui/material';
 
-type StopCardProps = {
+export type StopCardProps = {
 	title: string;
-	categories: string[];
+	categories: React.ReactNode[];
 	children?: React.ReactNode;
-} & BoxProps;
+};
 
 export const StopCard =
 	React.memo(
-		React.forwardRef<BoxProps, StopCardProps>(
+		React.forwardRef<BoxProps, StopCardProps & BoxProps>(
 			function StopCard(_p, ref) {
 				return (
 					<Box ref={ref} className="flex bg-white rounded-md overflow-hidden" {..._p}>
@@ -19,7 +19,7 @@ export const StopCard =
 							</Typography>
 							<Box className='flex flex-wrap justify-start'>
 								{_p.categories?.map(category => (
-									<Typography key={category} variant='body2' textTransform='capitalize'>
+									<Typography key={category?.toString()} variant='body2' textTransform='capitalize'>
 										{category}&nbsp;&nbsp;
 									</Typography>
 								))}
