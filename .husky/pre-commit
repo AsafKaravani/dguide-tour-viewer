@@ -4,4 +4,3 @@
 cd apps/tour-viewer
 yarn tsc
 yarn lint-and-fix
-
