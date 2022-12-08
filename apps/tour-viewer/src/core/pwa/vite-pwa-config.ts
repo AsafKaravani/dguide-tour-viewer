@@ -40,13 +40,11 @@ export const vitePwaConfig = () => {
 	const claims = true;
 	const selfDestroying = true;
 
-	if (true) {
-		pwaOptions.srcDir = 'src';
-		pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts';
-		pwaOptions.strategies = 'injectManifest';
-		(pwaOptions.manifest as Partial<ManifestOptions>).name = 'PWA Inject Manifest';
-		(pwaOptions.manifest as Partial<ManifestOptions>).short_name = 'PWA Inject';
-	}
+	pwaOptions.srcDir = 'src';
+	pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts';
+	pwaOptions.strategies = 'injectManifest';
+	(pwaOptions.manifest as Partial<ManifestOptions>).name = 'PWA Inject Manifest';
+	(pwaOptions.manifest as Partial<ManifestOptions>).short_name = 'PWA Inject';
 
 	if (claims) pwaOptions.registerType = 'autoUpdate';
 
