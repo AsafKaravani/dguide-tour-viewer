@@ -1,4 +1,3 @@
-import replace from '@rollup/plugin-replace';
 import { ManifestOptions, VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 
 export const vitePwaConfig = () => {
