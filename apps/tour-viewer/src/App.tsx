@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalProviders } from '@app/core/GlobalProviders';
-import { RoutingLayer } from '@app/core/routing/RoutingLayer';
+import { RoutingLayer } from './core/routing/RoutingLayer';
+
 
 function App() {
 	return (
