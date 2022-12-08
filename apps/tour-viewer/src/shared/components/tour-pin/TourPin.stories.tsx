@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { TourPin, TourPinProps } from '@app/shared/components/TourPin';
+import { TourPin, TourPinProps } from '@app/shared/components/tour-pin/TourPin';
 
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

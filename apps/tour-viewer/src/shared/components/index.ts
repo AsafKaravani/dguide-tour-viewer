@@ -1,5 +1,5 @@
 export * from './Seperator';
 export * from './TourChip';
-export * from './TourPin';
+export * from './tour-pin/TourPin';
 export * from './StopCard';
 export * from './UserBlock';

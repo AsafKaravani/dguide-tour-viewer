@@ -28,7 +28,9 @@ export const TourPin =
 							fontWeight: _p.active ? 800 : 600,
 							fontFamily: _g.theme.typography.fontFamily
 						}}>
-							{_p.children}
+							<Box sx={{ zIndex: 200 }}>
+								{_p.children}
+							</Box>
 						</Box>
 					</Box >
 				);

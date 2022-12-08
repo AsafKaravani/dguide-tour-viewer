@@ -1,11 +1,15 @@
 import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import L, { LatLngExpression, Map, TileLayer as TileLayerType } from 'leaflet';
 import 'leaflet.offline';
 
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { position } from 'stylis';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import { Marker, MarkerLayer } from 'react-leaflet-marker';
+import { TourPin } from '@app/shared/components/tour-pin/TourPin';
 
 const DefaultIcon = L.icon({
 	iconUrl: icon,
@@ -15,55 +19,61 @@ const DefaultIcon = L.icon({
 type MapPageProps = {
 	children?: React.ReactNode;
 };
+//https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png
 
 export const MapPage = React.memo<MapPageProps>(
 	function MapPage(_p) {
-		const [map, setMap] = useState<L.Map>();
-
+		const position: LatLngExpression = [31.788009038677018, 34.62986136174621];
+		const map = useRef<Map>(null);
+		const layer = useRef<TileLayerType>(null);
 		useEffect(() => {
-			const container = L.DomUtil.get('map') as any;
+			setTimeout(() => {
+				console.log(map.current);
+				if (map.current) {
 
-			if (container != null) {
-				if (container._leaflet_id) return;
-			}
-			console.log('init map');
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					const tileLayerOffline = L.tileLayer.offline(
+						'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png',
+						{
+						}
+					);
 
-			const map = new L.Map('map', {
-				zoomControl: false,
-			}).setView([
-				31.788009038677018, 34.62986136174621], 13);
+					tileLayerOffline.addTo(map.current);
 
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			//@ts-ignore
-			const tileLayerOffline = L.tileLayer.offline(
-				'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png',
-				{
-					zoomControl: false,
+					// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+					// @ts-ignore
+					const controlSaveTiles = L.control.savetiles(
+						tileLayerOffline,
+						{
+							zoomlevels: [13, 14, 15, 16], // optional zoomlevels to save, default current zoomlevel
+						}
+					);
+
+					controlSaveTiles.addTo(map.current!);
 				}
-			);
 
-			// tileLayerOffline.on('savestart', (e: any) => {
-			// 	setDownloading(true);
-			// 	setProgress(0);
-			// 	p.current = 0;
-			// 	setTotal(e._tilesforSave.length);
-
-			// });
-
-			// console.log('register');
-			// tileLayerOffline.on('savetileend', () => {
-			// 	p.current = p.current + 1;
-			// 	setProgress(p.current);
-			// });
-
-			tileLayerOffline.addTo(map);
-
-
-		}, [])
-
+			}, 1000);
+		}, []);
 		return (
 			<Box className='h-full w-full'>
-				<div id="map" className='h-full w-full'></div>
+				<MapContainer zoomControl={false} ref={map} className='h-full w-full' center={position} zoom={13}>
+					{/* <TileLayer ref={layer}
+						url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png"
+					/> */}
+					<MarkerLayer>
+						<Marker
+							position={position}
+							placement="top"
+							interactive
+							size={[40, 40 * 1.5]}
+						>
+							<TourPin size={40}>
+								12
+							</TourPin>
+						</Marker>
+					</MarkerLayer>
+				</MapContainer>
 			</Box>
 		);
 	});

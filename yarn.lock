@@ -6236,6 +6236,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^4.2.3":
   version: 4.2.4
   resolution: "clean-css@npm:4.2.4"
@@ -13623,6 +13630,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-leaflet-marker@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "react-leaflet-marker@npm:2.1.0"
+  dependencies:
+    classnames: ^2
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    react-leaflet: ^4.2.0
+  checksum: 155e54628d09f6b007e88b31ebc566e17f8612cfe827f6394a7355c09967de5c4f780aed5e1a919341a30529b9bc54063c9f84f4d9fb8b737f2556aa33e200f1
+  languageName: node
+  linkType: hard
+
 "react-leaflet@npm:4.2.0":
   version: 4.2.0
   resolution: "react-leaflet@npm:4.2.0"
@@ -15733,6 +15753,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-leaflet: 4.2.0
+    react-leaflet-marker: ^2.1.0
     react-player: ^2.11.0
     react-router-dom: ^6.4.4
     storybook-dark-mode: ^2.0.3
