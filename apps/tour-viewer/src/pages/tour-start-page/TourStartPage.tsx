@@ -12,8 +12,8 @@ export const TourStartPage =
 		function TourStartPage(_p, ref) {
 			return (
 				<Box ref={ref} {..._p}>
-					<Box className='flex items-center justify-center h-52 bg-white'>
-						<ReactPlayer playing height='100%' width='100%' url='videos/sample-video.mp4' controls />
+					<Box className='flex items-center justify-center  bg-white'>
+						<ReactPlayer playing height='100%' width='100%' url='https://firebasestorage.googleapis.com/v0/b/tours-app-1579553856346.appspot.com/o/1XU3bpkdsgJePawMWXB0%2FtoursMedia%2Fckjip9kxi0000395xiw5eng7y1_compress.mp4?alt=media&token=d1b98116-d1fc-4c74-82a6-8e0879955fef' controls />
 					</Box>
 					<Box className='p-4'>
 

@@ -11,6 +11,8 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import { Marker, MarkerLayer } from 'react-leaflet-marker';
 import { TourPin } from '@app/shared/components/tour-pin/TourPin';
 
+console.log(1);
+
 const DefaultIcon = L.icon({
 	iconUrl: icon,
 	shadowUrl: iconShadow,
@@ -29,6 +31,7 @@ export const MapPage = React.memo<MapPageProps>(
 		useEffect(() => {
 			setTimeout(() => {
 				console.log(map.current);
+
 				if (map.current) {
 
 					// eslint-disable-next-line @typescript-eslint/ban-ts-comment

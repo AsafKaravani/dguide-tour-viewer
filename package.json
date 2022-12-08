@@ -15,5 +15,8 @@
   },
   "scripts": {
     "prepare": "husky install"
+  },
+  "dependencies": {
+    "@rollup/plugin-replace": "^5.0.1"
   }
 }
