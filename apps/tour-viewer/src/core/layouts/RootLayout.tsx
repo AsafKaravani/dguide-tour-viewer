@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '@app/core/layouts/Header';
 import { RtlLayer } from '@app/core/theme/RtlLayer';
 
-
 type RootLayoutProps = {
 	children?: React.ReactNode;
 };
