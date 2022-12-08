@@ -37,10 +37,10 @@ export const vitePwaConfig = () => {
 		},
 	};
 
-	const claims = process.env.CLAIMS === 'true';
-	const selfDestroying = process.env.SW_DESTROY === 'true';
+	const claims = true;
+	const selfDestroying = true;
 
-	if (process.env.SW === 'true') {
+	if (true) {
 		pwaOptions.srcDir = 'src';
 		pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts';
 		pwaOptions.strategies = 'injectManifest';
