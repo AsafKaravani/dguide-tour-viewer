@@ -17,6 +17,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@rollup/plugin-replace": "^5.0.1"
+    "@rollup/plugin-replace": "^5.0.1",
+    "react-leaflet-marker": "2.0.0"
   }
 }

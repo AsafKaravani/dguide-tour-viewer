@@ -7993,6 +7993,7 @@ __metadata:
     "@rollup/plugin-replace": ^5.0.1
     husky: ^8.0.2
     lint-staged: ^13.0.4
+    react-leaflet-marker: 2.0.0
   languageName: unknown
   linkType: soft
 
@@ -14750,7 +14751,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-leaflet-marker@npm:^2.1.0":
+"react-leaflet-marker@npm:2.0.0":
+  version: 2.0.0
+  resolution: "react-leaflet-marker@npm:2.0.0"
+  dependencies:
+    classnames: ^2
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    react-leaflet: ^4.0.0
+  checksum: f5fc541a5664e2423ad2187975f4c8f939a892e1e64f672b50b64ae41b05aa48639793bb47da8b8ed6d34db98ad41559d5b97b0e18209adb030f40801c5896e4
+  languageName: node
+  linkType: hard
+
+"react-leaflet-marker@npm:2.1.0":
   version: 2.1.0
   resolution: "react-leaflet-marker@npm:2.1.0"
   dependencies:
@@ -16977,7 +16991,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-leaflet: 4.2.0
-    react-leaflet-marker: ^2.1.0
+    react-leaflet-marker: 2.1.0
     react-player: ^2.11.0
     react-router-dom: ^6.4.4
     recoil: ^0.7.6

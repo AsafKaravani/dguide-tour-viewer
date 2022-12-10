@@ -21,7 +21,7 @@ export default defineConfig({
 			],
 		}),
 		vitePwaConfig(),
-		rollupReplaceConfig()
+		rollupReplaceConfig(),
 	],
-	publicDir: './src/assets'
+	publicDir: './src/assets',
 });
