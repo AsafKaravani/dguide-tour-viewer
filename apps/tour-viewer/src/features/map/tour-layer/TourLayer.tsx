@@ -30,8 +30,6 @@ export const TourLayer = React.memo(function TourLayer() {
 	const _g = useGlobalHooks();
 
 	useEffect(() => {
-		console.log(state_TourState);
-
 		const firstStop = state_TourState?.stops[0];
 		if (firstStop?.stop_location)
 			leaflet.map.panTo(

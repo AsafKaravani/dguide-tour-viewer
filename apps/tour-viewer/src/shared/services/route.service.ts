@@ -10,6 +10,7 @@ export const service_routeService = {
 			coordinates: waypoints,
 			profile: 'foot-walking',
 			format: 'geojson',
+			language: 'he-il',
 		});
 	},
 };
