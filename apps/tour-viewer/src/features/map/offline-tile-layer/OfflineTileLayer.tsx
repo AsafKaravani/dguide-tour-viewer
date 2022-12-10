@@ -11,29 +11,26 @@ export const OfflineTileLayer = React.memo(
 		const L = _L as any;
 
 		useEffect(() => {
-			if (leaflet.map) {
+			const tileLayerOffline = L.tileLayer.offline(
+				'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png'
+			);
 
+			tileLayerOffline.addTo(leaflet.map);
 
-				const tileLayerOffline = L.tileLayer.offline(
-					'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png'
-				);
-
-				tileLayerOffline.addTo(leaflet.map);
-
-				const controlSaveTiles = L.control.savetiles(
-					tileLayerOffline,
-					{
-						zoomlevels: [13, 14, 15, 16],
-					}
-				);
-				// setTimeout(() => {
-				// 	controlSaveTiles._saveTiles();
-				// }, 2000);
-
-				return () => {
-					leaflet.map.removeControl(controlSaveTiles);
+			const controlSaveTiles = L.control.savetiles(
+				tileLayerOffline,
+				{
+					zoomlevels: [13, 14, 15, 16],
 				}
+			);
+			// setTimeout(() => {
+			// 	controlSaveTiles._saveTiles();
+			// }, 2000);
+
+			return () => {
+				leaflet.map.removeControl(controlSaveTiles);
 			}
+
 		});
 
 		return <></>;
