@@ -5999,6 +5999,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"asap@npm:^2.0.0":
+  version: 2.0.6
+  resolution: "asap@npm:2.0.6"
+  checksum: b296c92c4b969e973260e47523207cd5769abd27c245a68c26dc7a0fe8053c55bb04360237cb51cab1df52be939da77150ace99ad331fb7fb13b3423ed73ff3d
+  languageName: node
+  linkType: hard
+
 "asn1.js@npm:^5.2.0":
   version: 5.4.1
   resolution: "asn1.js@npm:5.4.1"
@@ -6353,7 +6360,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bluebird@npm:^3.5.5":
+"bluebird@npm:^3.5.5, bluebird@npm:^3.7.2":
   version: 3.7.2
   resolution: "bluebird@npm:3.7.2"
   checksum: 869417503c722e7dc54ca46715f70e15f4d9c602a423a02c825570862d12935be59ed9c7ba34a9b31f186c017c23cac6b54e35446f8353059c101da73eac22ef
@@ -7318,7 +7325,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"component-emitter@npm:^1.2.1":
+"component-emitter@npm:^1.2.1, component-emitter@npm:^1.3.0":
   version: 1.3.0
   resolution: "component-emitter@npm:1.3.0"
   checksum: b3c46de38ffd35c57d1c02488355be9f218e582aec72d72d1b8bbec95a3ac1b38c96cd6e03ff015577e68f550fbb361a3bfdbd9bb248be9390b7b3745691be6b
@@ -7434,6 +7441,13 @@ __metadata:
   version: 0.5.0
   resolution: "cookie@npm:0.5.0"
   checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
+  languageName: node
+  linkType: hard
+
+"cookiejar@npm:^2.1.3":
+  version: 2.1.3
+  resolution: "cookiejar@npm:2.1.3"
+  checksum: 88259983ebc52ceb23cdacfa48762b6a518a57872eff1c7ed01d214fff5cf492e2660d7d5c04700a28f1787a76811df39e8639f8e17670b3cf94ecd86e161f07
   languageName: node
   linkType: hard
 
@@ -7983,6 +7997,16 @@ __metadata:
   bin:
     detective: bin/detective.js
   checksum: dc4601bbc6be850edb3c2dab7a0eaf5a6169a15ad201679c66d40ea1986df816eeaecd590047f15b0780285f3eeea13b82dca0d4c52a47e744a571e326a72dc9
+  languageName: node
+  linkType: hard
+
+"dezalgo@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "dezalgo@npm:1.0.4"
+  dependencies:
+    asap: ^2.0.0
+    wrappy: 1
+  checksum: 895389c6aead740d2ab5da4d3466d20fa30f738010a4d3f4dcccc9fc645ca31c9d10b7e1804ae489b1eb02c7986f9f1f34ba132d409b043082a86d9a4e745624
   languageName: node
   linkType: hard
 
@@ -9271,6 +9295,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-safe-stringify@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "fast-safe-stringify@npm:2.1.1"
+  checksum: a851cbddc451745662f8f00ddb622d6766f9bd97642dabfd9a405fb0d646d69fc0b9a1243cbf67f5f18a39f40f6fa821737651ff1bceeba06c9992ca2dc5bd3d
+  languageName: node
+  linkType: hard
+
 "fastq@npm:^1.6.0":
   version: 1.13.0
   resolution: "fastq@npm:1.13.0"
@@ -9663,6 +9694,29 @@ __metadata:
     combined-stream: ^1.0.8
     mime-types: ^2.1.12
   checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
+  languageName: node
+  linkType: hard
+
+"formidable@npm:^2.0.1":
+  version: 2.1.2
+  resolution: "formidable@npm:2.1.2"
+  dependencies:
+    dezalgo: ^1.0.4
+    hexoid: ^1.0.0
+    once: ^1.4.0
+    qs: ^6.11.0
+  checksum: 81c8e5d89f5eb873e992893468f0de22c01678ca3d315db62be0560f9de1c77d4faefc9b1f4575098eb2263b3c81ba1024833a9fc3206297ddbac88a4f69b7a8
   languageName: node
   linkType: hard
 
@@ -10452,6 +10506,13 @@ __metadata:
     capital-case: ^1.0.4
     tslib: ^2.0.3
   checksum: 571c83eeb25e8130d172218712f807c0b96d62b020981400bccc1503a7cf14b09b8b10498a962d2739eccf231d950e3848ba7d420b58a6acd2f9283439546cd9
+  languageName: node
+  linkType: hard
+
+"hexoid@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "hexoid@npm:1.0.0"
+  checksum: 27a148ca76a2358287f40445870116baaff4a0ed0acc99900bf167f0f708ffd82e044ff55e9949c71963852b580fc024146d3ac6d5d76b508b78d927fa48ae2d
   languageName: node
   linkType: hard
 
@@ -12597,7 +12658,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"methods@npm:~1.1.2":
+"methods@npm:^1.1.2, methods@npm:~1.1.2":
   version: 1.1.2
   resolution: "methods@npm:1.1.2"
   checksum: 0917ff4041fa8e2f2fda5425a955fe16ca411591fbd123c0d722fcf02b73971ed6f764d85f0a6f547ce49ee0221ce2c19a5fa692157931cecb422984f1dcd13a
@@ -12679,7 +12740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mime@npm:^2.4.4":
+"mime@npm:2.6.0, mime@npm:^2.4.4":
   version: 2.6.0
   resolution: "mime@npm:2.6.0"
   bin:
@@ -13470,6 +13531,16 @@ __metadata:
     is-docker: ^2.1.1
     is-wsl: ^2.2.0
   checksum: e9545bec64cdbf30a0c35c1bdc310344adf8428a117f7d8df3c0af0a0a24c513b304916a6d9b11db0190ff7225c2d578885080b761ed46a3d5f6f1eebb98b63c
+  languageName: node
+  linkType: hard
+
+"openrouteservice-js@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "openrouteservice-js@npm:0.2.0"
+  dependencies:
+    bluebird: ^3.7.2
+    superagent: ^7.1.6
+  checksum: 6e08d17b3ee486079fc2b7778eac567ce7a581b5d95772511c7fc97fe79b01c16406921327e6fd88cd4605dd45bd04ce28104571fe331baea90d0a181e90c381
   languageName: node
   linkType: hard
 
@@ -14541,7 +14612,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:6.11.0, qs@npm:^6.10.0":
+"qs@npm:6.11.0, qs@npm:^6.10.0, qs@npm:^6.10.3, qs@npm:^6.11.0":
   version: 6.11.0
   resolution: "qs@npm:6.11.0"
   dependencies:
@@ -16545,6 +16616,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"superagent@npm:^7.1.6":
+  version: 7.1.6
+  resolution: "superagent@npm:7.1.6"
+  dependencies:
+    component-emitter: ^1.3.0
+    cookiejar: ^2.1.3
+    debug: ^4.3.4
+    fast-safe-stringify: ^2.1.1
+    form-data: ^4.0.0
+    formidable: ^2.0.1
+    methods: ^1.1.2
+    mime: 2.6.0
+    qs: ^6.10.3
+    readable-stream: ^3.6.0
+    semver: ^7.3.7
+  checksum: b73316836003219f1a4886a6d77dd28551a6784c30e871009fb7bad699fae772b20370d39d2ccb5a543c9335ce12b43a76b959a3ca983f1d6365cb4b5682c08f
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -16986,6 +17076,7 @@ __metadata:
     leaflet: ^1.9.3
     leaflet.offline: ^2.2.0
     lint-staged: ^13.0.4
+    openrouteservice-js: ^0.2.0
     plop: ^3.1.1
     postcss: ^8.4.19
     react: ^18.2.0
