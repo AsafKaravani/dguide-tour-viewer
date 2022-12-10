@@ -1,13 +1,12 @@
 import { Box } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import 'leaflet/dist/leaflet.css';
 import L, { LatLngExpression, Map, TileLayer as TileLayerType } from 'leaflet';
 import 'leaflet.offline';
 
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import { position } from 'stylis';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer } from 'react-leaflet';
 import { Marker, MarkerLayer } from 'react-leaflet-marker';
 import { TourPin } from '@app/shared/components/tour-pin/TourPin';
 
