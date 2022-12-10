@@ -12,7 +12,7 @@ export const MapPage = React.memo(
 		const bounds: LatLngBoundsExpression = [[31.788009038677018, 34.62986136174621], [31.788009038677018, 34.62986136174621]]
 		return (
 			<Box className='h-full w-full'>
-				<MapContainer className='h-full w-full' center={position} zoom={13} minZoom={16} maxZoom={18} zoomControl={false} bounds={bounds}>
+				<MapContainer className='h-full w-full' center={position} zoom={13} zoomControl={false} bounds={bounds}>
 					<OfflineTileLayer />
 					<TourLayer />
 				</MapContainer>
