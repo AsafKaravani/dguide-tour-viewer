@@ -20,6 +20,7 @@
       "@app/core/*": ["src/core/*"],
       "@app/shared/*": ["src/shared/*"],
       "@app/pages/*": ["src/pages/*"],
+      "@app/features/*": ["src/features/*"],
       "@app/*": ["src/*"]
     }
   },
