@@ -3,6 +3,7 @@ import { Box, BoxProps } from '@mui/material';
 import { useGlobalHooks } from '@app/core/hooks/global-hooks';
 
 export type TourPinProps = {
+	id?: string;
 	size: number;
 	active?: boolean;
 	children?: React.ReactNode;
@@ -17,9 +18,9 @@ export const TourPin = React.memo(
 		return (
 			<Box
 				ref={ref}
-				className={`inline-block relative origin-bottom ${
-					_p.active && 'scale-110'
-				}`}
+				className={`tour-pin stop-id-${
+					_p.id
+				} inline-block relative origin-bottom ${_p.active && 'scale-110'}`}
 				sx={{ position: 'relative', top: _p.size * -1.5, left: _p.size * -0.5 }}
 			>
 				<svg

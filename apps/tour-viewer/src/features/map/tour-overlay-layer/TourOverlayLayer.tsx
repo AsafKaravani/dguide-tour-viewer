@@ -1,7 +1,8 @@
 import { StopCard } from '@app/shared/components';
 import { Box } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperClass from 'swiper/types/swiper-class';
 import 'swiper/css';
 import { motion } from 'framer-motion';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -17,7 +18,7 @@ type TourOverlayLayerProps = {
 export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 	function TourOverlayLayer(_p) {
 		const leaflet = useLeafletContext();
-
+		const [swiper, setSwiper] = useState<SwiperClass | null>(null);
 		const state_TourState = useRecoilValue(atom_tourState);
 		const [state_activeStopState, setState_activeStopState] =
 			useRecoilState(atom_activeStopState);
@@ -34,6 +35,10 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 					duration: 0.3,
 				}
 			);
+			const activeStopIndex = state_TourState?.stops.findIndex(
+				(stop) => stop.id === state_activeStopState.id
+			);
+			if (activeStopIndex !== undefined) swiper?.slideTo(activeStopIndex);
 		}, [state_activeStopState]);
 
 		const handleSwipe = (index: number) => {
@@ -54,12 +59,12 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 
 		return (
 			<Box
-				className="fixed bottom-0 flex flex-col justify-between w-full h-full"
+				className="fixed bottom-0 flex flex-col justify-between w-full h-full pointer-events-none"
 				sx={{ zIndex: 500 }}
 			>
-				<Box></Box>
+				<Box className="bg-slate-500 bg-opacity-50 "></Box>
 				<Box
-					className="w-full"
+					className="w-full pointer-events-auto"
 					sx={{
 						background: 'linear-gradient(0deg, #00000050 100%, #00000000 100%)',
 					}}
@@ -68,6 +73,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 						spaceBetween={10}
 						slidesPerView={1.3}
 						touchMoveStopPropagation
+						onSwiper={(_swiper) => setSwiper(_swiper)}
 						onSlideChange={(swiper) => handleSwipe(swiper.activeIndex)}
 						style={{ overflow: 'visible' }}
 					>

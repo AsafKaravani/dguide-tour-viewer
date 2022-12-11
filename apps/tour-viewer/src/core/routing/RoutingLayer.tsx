@@ -27,10 +27,6 @@ const router = createBrowserRouter([
 				path: 'elements',
 				element: <ElementsPage />,
 			},
-			{
-				path: 'tour',
-				element: <TourStartPage />,
-			},
 		],
 	},
 ]);

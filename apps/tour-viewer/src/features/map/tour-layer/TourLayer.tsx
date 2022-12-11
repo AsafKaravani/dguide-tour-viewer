@@ -25,6 +25,12 @@ export const TourLayer = React.memo(function TourLayer() {
 	const leaflet = useLeafletContext();
 	const _g = useGlobalHooks();
 
+	const handleClickOnPin = (stopId: string) => {
+		setState_activeStopState(
+			state_TourState?.stops.filter((stop) => stop.id === stopId)[0]
+		);
+	};
+
 	useEffect(() => {
 		const firstStop = state_TourState?.stops[0];
 		if (firstStop?.stop_location)
@@ -45,6 +51,16 @@ export const TourLayer = React.memo(function TourLayer() {
 		})();
 	}, [state_TourState]);
 
+	useEffect(() => {
+		setTimeout(() => {
+			const pins = document.querySelectorAll('.tour-pin');
+			pins.forEach((pin) => {
+				const stopId = pin.classList[1].split('-')[2];
+				pin.addEventListener('click', () => handleClickOnPin(stopId), false);
+			});
+		}, 100);
+	}, [state_TourState, state_activeStopState]);
+
 	return (
 		<>
 			{state_TourState && (
@@ -63,11 +79,13 @@ export const TourLayer = React.memo(function TourLayer() {
 										placement="bottom"
 										size={[0, 0]}
 									>
-										<Box onClick={() => console.log('Test click')}>
-											<TourPin size={40}>
+										<TourPin size={40} id={stop.id}>
+											{stop.type === 'bigStop' ? (
+												(stop.order + 1).toString()
+											) : (
 												<i className="fa-solid fa-store scale-125" />
-											</TourPin>
-										</Box>
+											)}
+										</TourPin>
 									</Marker>
 								);
 							})}
@@ -96,7 +114,7 @@ export const TourLayer = React.memo(function TourLayer() {
 							placement="bottom"
 							size={[0, 0]}
 						>
-							<TourPin size={40} active={true}>
+							<TourPin size={40} active={true} id={state_activeStopState.id}>
 								{state_activeStopState.type === 'bigStop' ? (
 									(state_activeStopState.order + 1).toString()
 								) : (
