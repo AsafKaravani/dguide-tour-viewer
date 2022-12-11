@@ -32,7 +32,12 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 				sx={{ zIndex: 500 }}
 			>
 				<Box></Box>
-				<Box className="w-full">
+				<Box
+					className="w-full"
+					sx={{
+						background: 'linear-gradient(0deg, #00000050 100%, #00000000 100%)',
+					}}
+				>
 					<Swiper
 						spaceBetween={10}
 						slidesPerView={1.3}

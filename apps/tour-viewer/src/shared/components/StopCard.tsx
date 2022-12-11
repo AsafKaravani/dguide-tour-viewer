@@ -16,7 +16,7 @@ export const StopCard = React.memo(
 		return (
 			<Box
 				ref={ref}
-				className="flex bg-white rounded-md overflow-hidden"
+				className="flex bg-white rounded-md overflow-hidden p-0.5"
 				{..._p}
 			>
 				<Box className="p-3 flex flex-1 flex-col justify-between">
@@ -45,10 +45,11 @@ export const StopCard = React.memo(
 					<img
 						src={_p.image_src}
 						width="110px"
+						className="object-cover object-center"
 						style={{
 							minWidth: '110px',
-							objectFit: 'cover',
-							objectPosition: 'center',
+							borderStartEndRadius: 5,
+							borderEndEndRadius: 5,
 						}}
 					/>
 				</Box>
