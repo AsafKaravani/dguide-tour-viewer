@@ -1,89 +1,126 @@
 import React from 'react';
 import { Box, BoxProps, Typography, Link, Button } from '@mui/material';
 import { Seperator, TourChip, UserBlock } from '@app/shared/components';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+import { Tour } from '@app/shared/models/tour.type';
 
 type TourStartPageProps = {
+	tour: Tour;
+	onClickStart?: () => void;
+	onClickDownload?: () => void;
 	children?: React.ReactNode;
 } & BoxProps;
 
-export const TourStartPage =
-	React.forwardRef<BoxProps, TourStartPageProps>(
-		function TourStartPage(_p, ref) {
-			return (
-				<Box ref={ref} {..._p}>
-					<Box className='flex items-center justify-center  bg-white'>
-						<ReactPlayer playing height='100%' width='100%' url='https://firebasestorage.googleapis.com/v0/b/tours-app-1579553856346.appspot.com/o/1XU3bpkdsgJePawMWXB0%2FtoursMedia%2Fckjip9kxi0000395xiw5eng7y1_compress.mp4?alt=media&token=d1b98116-d1fc-4c74-82a6-8e0879955fef' controls />
-					</Box>
-					<Box className='p-4'>
-
-						<Typography variant='h1'>
-							Jerusalem of three religions
-						</Typography>
-						<Seperator />
-
-						<UserBlock title='Your guide' name='Raphael' />
-						<Seperator />
-						<Seperator />
-
-						<Typography variant='body2' className='mb-2' fontWeight={800}>
-							Do not forget
-						</Typography>
-						<Box className='flex gap-4'>
-							<TourChip iconType='solid' iconName='map-location' fontSize='0.8em'>
-								2.19 km
-							</TourChip>
-							<TourChip iconType='solid' iconName='clock'>
-								3-4 Hours
-							</TourChip>
-							<TourChip iconType='solid' iconName='battery-bolt fa-rotate-270'>
-								Full Battery
-							</TourChip>
-						</Box>
-						<Seperator />
-
-						<Box className='flex justify-between'>
-							<TourChip iconType='solid' iconName='p' fontSize='0.95em'>
-								<>Parking: &nbsp;</>
-								<Link href="#">Electricity Garden Parking...</Link>
-							</TourChip>
-							<Box className='flex gap-3 items-center'>
-								<img src='images/waze-icon.png' width={20} />
-								<img src='images/google-maps-icon.png' width={20} />
-							</Box>
-						</Box>
-						<Seperator />
-
-						<Typography variant='body2' className='mb-4'>
-							<b>Lorem ipsum dolor sit amet?</b>
-							<br />
-							consectetur adipiscing elit. At dolor tellus dolor facilisis odio non dignissim.
-						</Typography>
-						<Typography variant='body2' className='mb-4'>
-							<b>Lorem ipsum dolor sit amet?</b>
-							<br />
-							consectetur adipiscing elit. At dolor tellus dolor facilisis odio non dignissim.
-						</Typography>
-						<Typography variant='body2' className='mb-4'>
-							<b>Lorem ipsum dolor sit amet?</b>
-							<br />
-							consectetur adipiscing elit. At dolor tellus dolor facilisis odio non dignissim.
-						</Typography>
-
-						<Box className='flex flex-col'>
-							<Button className='mb-5'>
-								Get Started
-							</Button>
-
-							<Typography variant='body2' className='mb-2 text-center' fontWeight={800}>
-								Want to use it offline?
-							</Typography>
-							<Button color='secondary'>
-								Download
-							</Button>
-						</Box>
-					</Box>
+export const TourStartPage = React.forwardRef<BoxProps, TourStartPageProps>(
+	function TourStartPage(_p, ref) {
+		return (
+			<Box ref={ref}>
+				<Box className="flex items-center justify-center bg-white ">
+					{_p.tour.exp_video && (
+						<ReactPlayer
+							style={{ maxHeight: '40vh' }}
+							width="100%"
+							url={_p.tour.exp_video}
+							controls
+							playing
+						/>
+					)}
 				</Box>
-			);
-		}
-	);
+				<Box className="p-4">
+					<Typography variant="h1">{_p.tour.title}</Typography>
+					<Seperator />
+
+					<UserBlock
+						title="המדריך שלך"
+						name={_p.tour.tour_guide.full_name}
+						image_url={_p.tour.tour_guide.profile_image}
+					/>
+					<Seperator />
+					<Seperator />
+
+					<Typography variant="body2" className="mb-2" fontWeight={800}>
+						לא לשכוח
+					</Typography>
+					<Box className="flex flex-wrap gap-4 mb-4">
+						{_p.tour.equipment.map((item) => (
+							<TourChip
+								key={item}
+								icon_type="solid"
+								icon_name={iconsMap[item]}
+								fontSize="0.8em"
+							>
+								{item}
+							</TourChip>
+						))}
+					</Box>
+
+					<Typography variant="body2" className="mb-2" fontWeight={800}>
+						המסלול
+					</Typography>
+					<Box className="flex flex-wrap gap-4">
+						<TourChip
+							icon_type="solid"
+							icon_name="map-location"
+							fontSize="0.8em"
+						>
+							{(_p.tour.distance / 1000).toFixed(1)} ק"מ
+						</TourChip>
+						<TourChip icon_type="solid" icon_name="clock">
+							{_p.tour.duration} שעות
+						</TourChip>
+					</Box>
+
+					<Seperator />
+
+					<Box className="flex justify-between">
+						<TourChip icon_type="solid" icon_name="p" fontSize="0.95em">
+							<>חניה: &nbsp;</>
+							<Link href="#">שער יפו ירושלים...</Link>
+						</TourChip>
+						<Box className="flex gap-3 items-center">
+							<img src="images/waze-icon.png" width={20} />
+							<img src="images/google-maps-icon.png" width={20} />
+						</Box>
+					</Box>
+					<Seperator />
+
+					{Array.isArray(_p.tour.notes) ? (
+						_p.tour.notes.map((txt, i) => (
+							<Typography key={i} variant="body2" className="mb-4">
+								{txt}
+							</Typography>
+						))
+					) : (
+						<Typography variant="body2" className="mb-4">
+							{_p.tour.notes}
+						</Typography>
+					)}
+					<Typography variant="body2" className="mb-4"></Typography>
+
+					<Box className="flex flex-col">
+						<Button className="mb-5" onClick={_p.onClickStart}>
+							צא לדרך!
+						</Button>
+
+						<Typography
+							variant="body2"
+							className="mb-2 text-center"
+							fontWeight={800}
+						>
+							לשימוש המסלול גם ללא רשת לחץ מטה!
+						</Typography>
+						<Button color="secondary" onClick={_p.onClickDownload}>
+							הורד מסלול
+						</Button>
+					</Box>
+					<Seperator className="mb-10 opacity-0" />
+				</Box>
+			</Box>
+		);
+	}
+);
+
+const iconsMap: any = {
+	מים: 'bottle-water mt-0.5',
+	'סוללה מלאה': 'battery-bolt fa-rotate-270',
+};

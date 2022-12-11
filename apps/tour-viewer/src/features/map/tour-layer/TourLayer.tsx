@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Marker, MarkerLayer } from 'react-leaflet-marker';
 import { TourPin } from '@app/shared/components';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { atom_tourState } from '@app/shared/state/tour.atom';
 import { useLeafletContext } from '@react-leaflet/core';
 import { Pane, Polyline } from 'react-leaflet';
 import { useGlobalHooks } from '@app/core/hooks/global-hooks';
 import { service_routeService } from '@app/shared/services/route.service';
 import { atom_activeStopState } from '@app/shared/state/active-stop.atom';
+import { Box } from '@mui/material';
 
 export const TourLayer = React.memo(function TourLayer() {
-	const state_activeStopState = useRecoilValue(atom_activeStopState);
+	const [state_activeStopState, setState_activeStopState] =
+		useRecoilState(atom_activeStopState);
 	const state_TourState = useRecoilValue(atom_tourState);
 	const tourWaypoints_latLngReversed: [number, number][] =
 		state_TourState?.stops.map((stop) => [
@@ -61,16 +63,11 @@ export const TourLayer = React.memo(function TourLayer() {
 										placement="bottom"
 										size={[0, 0]}
 									>
-										<TourPin
-											size={40}
-											active={state_activeStopState?.id === stop?.id}
-										>
-											{stop.type === 'bigStop' ? (
-												(stop.order + 1).toString()
-											) : (
+										<Box onClick={() => console.log('Test click')}>
+											<TourPin size={40}>
 												<i className="fa-solid fa-store scale-125" />
-											)}
-										</TourPin>
+											</TourPin>
+										</Box>
 									</Marker>
 								);
 							})}

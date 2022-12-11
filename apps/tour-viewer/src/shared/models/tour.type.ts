@@ -119,7 +119,7 @@ export type Tour = {
 	id: string;
 	created_date: CreatedDate;
 	duration: number;
-	notes: string;
+	notes: string | string[];
 	approval_date: ApprovalDate;
 	location: string;
 	title: string;

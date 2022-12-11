@@ -74,13 +74,13 @@ export const ElementsPage: React.FC<ElementsPageProps> = React.memo(
 
 					<Typography variant="caption">Chip</Typography>
 					<Box className="flex gap-4">
-						<TourChip iconType="solid" iconName="clock">
+						<TourChip icon_type="solid" icon_name="clock">
 							3-4 Hours
 						</TourChip>
-						<TourChip iconType="solid" iconName="battery-bolt fa-rotate-270">
+						<TourChip icon_type="solid" icon_name="battery-bolt fa-rotate-270">
 							Full Battery
 						</TourChip>
-						<TourChip iconType="brands" iconName="waze">
+						<TourChip icon_type="brands" icon_name="waze">
 							Waze
 						</TourChip>
 					</Box>
