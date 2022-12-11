@@ -28,7 +28,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 
 		return (
 			<Box
-				className="absolute flex flex-col justify-between w-full h-full"
+				className="fixed bottom-0 flex flex-col justify-between w-full h-full"
 				sx={{ zIndex: 500 }}
 			>
 				<Box></Box>
@@ -46,7 +46,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 							<SwiperSlide key={stop.id}>
 								<motion.div
 									whileTap={{ scale: 0.9 }}
-									className="mb-3"
+									className="mb-4"
 									style={{ marginInlineStart: 12 }}
 									dragElastic
 								>
