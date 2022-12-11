@@ -48,31 +48,32 @@ export const TourLayer = React.memo(function TourLayer() {
 			{state_TourState && (
 				<Pane name="tour-stops" style={{ zIndex: 250 }}>
 					<MarkerLayer>
-						{state_TourState?.stops.map((stop) => {
-							if (stop.id === state_activeStopState?.id) return <></>;
-							return (
-								<Marker
-									key={stop.id}
-									position={{
-										lat: stop.stop_location.latitude,
-										lng: stop.stop_location.longitude,
-									}}
-									placement="bottom"
-									size={[0, 0]}
-								>
-									<TourPin
-										size={40}
-										active={state_activeStopState?.id === stop?.id}
+						{state_TourState?.stops
+							.filter((stop) => stop.id !== state_activeStopState?.id)
+							.map((stop) => {
+								return (
+									<Marker
+										key={stop.id}
+										position={{
+											lat: stop.stop_location.latitude,
+											lng: stop.stop_location.longitude,
+										}}
+										placement="bottom"
+										size={[0, 0]}
 									>
-										{stop.type === 'bigStop' ? (
-											(stop.order + 1).toString()
-										) : (
-											<i className="fa-solid fa-store scale-125" />
-										)}
-									</TourPin>
-								</Marker>
-							);
-						})}
+										<TourPin
+											size={40}
+											active={state_activeStopState?.id === stop?.id}
+										>
+											{stop.type === 'bigStop' ? (
+												(stop.order + 1).toString()
+											) : (
+												<i className="fa-solid fa-store scale-125" />
+											)}
+										</TourPin>
+									</Marker>
+								);
+							})}
 					</MarkerLayer>
 				</Pane>
 			)}
