@@ -6,18 +6,13 @@ import { atom_tourState } from '@app/shared/state/tour.atom';
 import { useLeafletContext } from '@react-leaflet/core';
 import { Pane, Polyline } from 'react-leaflet';
 import { useGlobalHooks } from '@app/core/hooks/global-hooks';
-import { LatLngExpression } from 'leaflet';
 import { service_routeService } from '@app/shared/services/route.service';
+import { atom_activeStopState } from '@app/shared/state/active-stop.atom';
 //5b3ce3597851110001cf6248ad8483d00dbb489e958c465e60ca3baa
 
 export const TourLayer = React.memo(function TourLayer() {
+	const state_activeStopState = useRecoilValue(atom_activeStopState);
 	const state_TourState = useRecoilValue(atom_tourState);
-	const tourWaypoints: [number, number][] =
-		state_TourState?.stops.map((stop) => [
-			stop.stop_location.latitude,
-			stop.stop_location.longitude,
-		]) ?? [];
-
 	const tourWaypoints_latLngReversed: [number, number][] =
 		state_TourState?.stops.map((stop) => [
 			stop.stop_location.longitude,
@@ -49,6 +44,21 @@ export const TourLayer = React.memo(function TourLayer() {
 		})();
 	}, [state_TourState]);
 
+	useEffect(() => {
+		if (!state_activeStopState?.stop_location) return;
+		leaflet.map.zoomIn(17);
+		leaflet.map.panTo(
+			[
+				state_activeStopState?.stop_location.latitude,
+				state_activeStopState?.stop_location.longitude,
+			],
+			{
+				duration: 1,
+				animate: true,
+			}
+		);
+	}, [state_activeStopState]);
+
 	return (
 		<>
 			{state_TourState && (
@@ -64,7 +74,10 @@ export const TourLayer = React.memo(function TourLayer() {
 								placement="bottom"
 								size={[0, 0]}
 							>
-								<TourPin size={40}>
+								<TourPin
+									size={40}
+									active={state_activeStopState?.id === stop?.id}
+								>
 									{stop.type === 'bigStop' ? (
 										(stop.order + 1).toString()
 									) : (
@@ -81,6 +94,7 @@ export const TourLayer = React.memo(function TourLayer() {
 				<Polyline
 					pathOptions={{
 						color: _g.theme.palette.primary.main,
+						dashArray: '10, 10',
 					}}
 					positions={walkingWaypoints.map((w) => [w[1], w[0]])}
 				/>

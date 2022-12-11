@@ -17,7 +17,6 @@ export const TourPin = React.memo(
 		return (
 			<Box
 				ref={ref}
-				{..._p}
 				className={`inline-block relative origin-bottom ${
 					_p.active && 'scale-110'
 				}`}
