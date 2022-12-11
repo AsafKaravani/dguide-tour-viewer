@@ -1,15 +1,16 @@
 import { StopCard } from '@app/shared/components';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperClass from 'swiper/types/swiper-class';
 import 'swiper/css';
 import { motion } from 'framer-motion';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { atom_tourState } from '@app/shared/state/tour.atom';
 import { atom_activeStopState } from '@app/shared/state/active-stop.atom';
 import { useLeafletContext } from '@react-leaflet/core';
 import { Stop } from '@app/shared/models/tour.type';
+import { atom_openedStopState } from '@app/shared/state/opened-stop.atom';
 
 type TourOverlayLayerProps = {
 	children?: React.ReactNode;
@@ -22,6 +23,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 		const state_TourState = useRecoilValue(atom_tourState);
 		const [state_activeStopState, setState_activeStopState] =
 			useRecoilState(atom_activeStopState);
+		const setState_openedStopState = useSetRecoilState(atom_openedStopState);
 
 		useEffect(() => {
 			if (!state_activeStopState?.stop_location) return;
@@ -46,6 +48,10 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 		};
 
 		const handleStopCardClick = (stop: Stop) => {
+			setState_openedStopState(stop);
+		};
+
+		const zoomToStop = (stop: Stop) => {
 			leaflet.map.flyTo(
 				[stop.stop_location.latitude, stop.stop_location.longitude],
 				18,
@@ -79,14 +85,21 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 					>
 						{state_TourState?.stops.map((stop) => (
 							<SwiperSlide key={stop.id}>
+								<Button
+									variant="outlined"
+									className="p-0 px-4 text-sm  absolute bottom-full left-0 mb-1 bg-white"
+									onClick={() => handleStopCardClick(stop)}
+								>
+									פתח תחנה
+								</Button>
 								<motion.div
 									whileTap={{ scale: 0.9 }}
-									onClick={() => handleStopCardClick(stop)}
 									className="mb-4"
 									style={{ marginInlineStart: 12 }}
 									dragElastic
 								>
 									<StopCard
+										onClick={() => zoomToStop(stop)}
 										sx={{ width: '100%', height: '15vh' }}
 										title={stop.s_title}
 										image_src={

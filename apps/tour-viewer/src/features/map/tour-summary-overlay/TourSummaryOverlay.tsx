@@ -3,12 +3,28 @@ import { atom_tourState } from '@app/shared/state/tour.atom';
 import { CircularProgress, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { OpeningStopBlock } from '@app/features/map/opening-stop-block/OpeningStopBlock';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, HTMLMotionProps } from 'framer-motion';
+import { atom_openedStopState } from '@app/shared/state/opened-stop.atom';
+import { BigStopPage } from '@app/features/map/big-stop-page/BigStopPage';
 
 type TourSummaryOverlayProps = {
 	children?: React.ReactNode;
+};
+
+const framerSlideLeft: HTMLMotionProps<'div'> = {
+	transition: { duration: 0.3, ease: 'easeInOut' },
+	initial: { translateX: '100vw' },
+	animate: { translateX: '0vw' },
+	exit: { translateX: '-100vw' },
+};
+
+const framerSlideUpDown: HTMLMotionProps<'div'> = {
+	transition: { duration: 0.2, ease: 'easeInOut' },
+	initial: { translateY: '100vh' },
+	animate: { translateY: '0vh' },
+	exit: { translateY: '100vh' },
 };
 
 export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
@@ -16,6 +32,8 @@ export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
 		const state_tourState = useRecoilValue(atom_tourState);
 		const [hidePage, setHidePage] = useState(false);
 		const [startTour, setStartTour] = useState(false);
+		const [state_openedStopState, setState_openedStopState] =
+			useRecoilState(atom_openedStopState);
 		return (
 			<AnimatePresence>
 				{!state_tourState && (
@@ -34,10 +52,7 @@ export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
 						key={'asdasd'}
 						className="fixed top-0 bottom-0 w-screen h-screen bg-white overflow-auto"
 						style={{ zIndex: 999999 }}
-						transition={{ duration: 0.2 }}
-						initial={{ opacity: 1, translateX: '0vh' }}
-						animate={{ opacity: 1, translateX: '0vh' }}
-						exit={{ opacity: 1, translateX: '-100vh' }}
+						{...framerSlideLeft}
 					>
 						<TourStartPage
 							onClickStart={() => {
@@ -54,14 +69,24 @@ export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
 						key={'asd'}
 						className="fixed top-0 bottom-0 w-screen h-screen bg-white overflow-auto"
 						style={{ zIndex: 999999 }}
-						transition={{ duration: 0.2 }}
-						initial={{ opacity: 1, translateX: '100vh' }}
-						animate={{ opacity: 1, translateX: '0vh' }}
-						exit={{ opacity: 1, translateX: '-100vh' }}
+						{...framerSlideLeft}
 					>
 						<OpeningStopBlock
 							stop={state_tourState.stops[0]}
 							onClickSkip={() => setStartTour(false)}
+						/>
+					</motion.div>
+				)}
+				{state_tourState && state_openedStopState && (
+					<motion.div
+						key={'asd'}
+						className="fixed top-0 bottom-0 w-screen h-screen bg-white overflow-auto"
+						style={{ zIndex: 999999 }}
+						{...framerSlideUpDown}
+					>
+						<BigStopPage
+							stop={state_openedStopState}
+							onClickBack={() => setState_openedStopState()}
 						/>
 					</motion.div>
 				)}
