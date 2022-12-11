@@ -39,7 +39,7 @@ export const StopCard = React.memo(
 					</Box>
 				</Box>
 				<Box className="flex">
-					<Box className="p-3 flex flex-col justify-end">
+					<Box className=" py-0.5 px-1 flex flex-col justify-end">
 						<img src="images/google-maps-icon.png" />
 					</Box>
 					<img

@@ -8,7 +8,6 @@ import { Pane, Polyline } from 'react-leaflet';
 import { useGlobalHooks } from '@app/core/hooks/global-hooks';
 import { service_routeService } from '@app/shared/services/route.service';
 import { atom_activeStopState } from '@app/shared/state/active-stop.atom';
-//5b3ce3597851110001cf6248ad8483d00dbb489e958c465e60ca3baa
 
 export const TourLayer = React.memo(function TourLayer() {
 	const state_activeStopState = useRecoilValue(atom_activeStopState);
@@ -44,48 +43,36 @@ export const TourLayer = React.memo(function TourLayer() {
 		})();
 	}, [state_TourState]);
 
-	useEffect(() => {
-		if (!state_activeStopState?.stop_location) return;
-		leaflet.map.zoomIn(17);
-		leaflet.map.panTo(
-			[
-				state_activeStopState?.stop_location.latitude,
-				state_activeStopState?.stop_location.longitude,
-			],
-			{
-				duration: 1,
-				animate: true,
-			}
-		);
-	}, [state_activeStopState]);
-
 	return (
 		<>
 			{state_TourState && (
 				<Pane name="tour-stops" style={{ zIndex: 250 }}>
 					<MarkerLayer>
-						{state_TourState?.stops.map((stop) => (
-							<Marker
-								key={stop.id}
-								position={{
-									lat: stop.stop_location.latitude,
-									lng: stop.stop_location.longitude,
-								}}
-								placement="bottom"
-								size={[0, 0]}
-							>
-								<TourPin
-									size={40}
-									active={state_activeStopState?.id === stop?.id}
+						{state_TourState?.stops.map((stop) => {
+							if (stop.id === state_activeStopState?.id) return <></>;
+							return (
+								<Marker
+									key={stop.id}
+									position={{
+										lat: stop.stop_location.latitude,
+										lng: stop.stop_location.longitude,
+									}}
+									placement="bottom"
+									size={[0, 0]}
 								>
-									{stop.type === 'bigStop' ? (
-										(stop.order + 1).toString()
-									) : (
-										<i className="fa-solid fa-store scale-125" />
-									)}
-								</TourPin>
-							</Marker>
-						))}
+									<TourPin
+										size={40}
+										active={state_activeStopState?.id === stop?.id}
+									>
+										{stop.type === 'bigStop' ? (
+											(stop.order + 1).toString()
+										) : (
+											<i className="fa-solid fa-store scale-125" />
+										)}
+									</TourPin>
+								</Marker>
+							);
+						})}
 					</MarkerLayer>
 				</Pane>
 			)}
@@ -99,6 +86,29 @@ export const TourLayer = React.memo(function TourLayer() {
 					positions={walkingWaypoints.map((w) => [w[1], w[0]])}
 				/>
 			</Pane>
+			{state_activeStopState && (
+				<Pane name="tour-active-stop" style={{ zIndex: 999 }}>
+					<MarkerLayer>
+						<Marker
+							key={state_activeStopState.id}
+							position={{
+								lat: state_activeStopState.stop_location.latitude,
+								lng: state_activeStopState.stop_location.longitude,
+							}}
+							placement="bottom"
+							size={[0, 0]}
+						>
+							<TourPin size={40} active={true}>
+								{state_activeStopState.type === 'bigStop' ? (
+									(state_activeStopState.order + 1).toString()
+								) : (
+									<i className="fa-solid fa-store scale-125" />
+								)}
+							</TourPin>
+						</Marker>
+					</MarkerLayer>
+				</Pane>
+			)}
 		</>
 	);
 });

@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { atom_tourState } from '@app/shared/state/tour.atom';
 import { atom_activeStopState } from '@app/shared/state/active-stop.atom';
+import { useLeafletContext } from '@react-leaflet/core';
+import { Stop } from '@app/shared/models/tour.type';
 
 type TourOverlayLayerProps = {
 	children?: React.ReactNode;
@@ -14,12 +16,36 @@ type TourOverlayLayerProps = {
 
 export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 	function TourOverlayLayer(_p) {
+		const leaflet = useLeafletContext();
+
 		const state_TourState = useRecoilValue(atom_tourState);
 		const [state_activeStopState, setState_activeStopState] =
 			useRecoilState(atom_activeStopState);
 
+		useEffect(() => {
+			if (!state_activeStopState?.stop_location) return;
+			leaflet.map.flyTo(
+				[
+					state_activeStopState?.stop_location.latitude,
+					state_activeStopState?.stop_location.longitude,
+				],
+				17,
+				{
+					duration: 0.3,
+				}
+			);
+		}, [state_activeStopState]);
+
 		const handleSwipe = (index: number) => {
 			setState_activeStopState(state_TourState?.stops[index]);
+		};
+
+		const handleStopCardClick = (stop: Stop) => {
+			leaflet.map.flyTo(
+				[stop.stop_location.latitude, stop.stop_location.longitude],
+				18,
+				{ duration: 0.5 }
+			);
 		};
 
 		useEffect(() => {
@@ -42,8 +68,6 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 						spaceBetween={10}
 						slidesPerView={1.3}
 						touchMoveStopPropagation
-						preventClicks
-						preventClicksPropagation
 						onSlideChange={(swiper) => handleSwipe(swiper.activeIndex)}
 						style={{ overflow: 'visible' }}
 					>
@@ -51,6 +75,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 							<SwiperSlide key={stop.id}>
 								<motion.div
 									whileTap={{ scale: 0.9 }}
+									onClick={() => handleStopCardClick(stop)}
 									className="mb-4"
 									style={{ marginInlineStart: 12 }}
 									dragElastic
