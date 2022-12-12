@@ -9,3 +9,9 @@
 .leaflet-control-attribution.leaflet-control {
 	display: none;
 }
+
+audio::-webkit-media-controls-play-button,
+     audio::-webkit-media-controls-panel {
+     background-color: #fff;
+     color: #fff;
+     }

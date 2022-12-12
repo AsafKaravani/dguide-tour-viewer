@@ -11,6 +11,7 @@ import { atom_activeStopState } from '@app/shared/state/active-stop.atom';
 import { useLeafletContext } from '@react-leaflet/core';
 import { Stop } from '@app/shared/models/tour.type';
 import { atom_openedStopState } from '@app/shared/state/opened-stop.atom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 type TourOverlayLayerProps = {
 	children?: React.ReactNode;
@@ -19,11 +20,25 @@ type TourOverlayLayerProps = {
 export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 	function TourOverlayLayer(_p) {
 		const leaflet = useLeafletContext();
+		const navigate = useNavigate();
+		const location = useLocation();
 		const [swiper, setSwiper] = useState<SwiperClass | null>(null);
 		const state_TourState = useRecoilValue(atom_tourState);
 		const [state_activeStopState, setState_activeStopState] =
 			useRecoilState(atom_activeStopState);
-		const setState_openedStopState = useSetRecoilState(atom_openedStopState);
+		const [state_openedStopState, setState_openedStopState] =
+			useRecoilState(atom_openedStopState);
+
+		useEffect(() => {
+			console.log(location.search);
+
+			if (state_openedStopState?.id)
+				navigate(`${location.pathname}?stop=${state_openedStopState?.id}`);
+		}, [state_openedStopState]);
+
+		useEffect(() => {
+			if (!location.search) setState_openedStopState(undefined);
+		}, [location]);
 
 		useEffect(() => {
 			if (!state_activeStopState?.stop_location) return;
@@ -84,14 +99,40 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 						style={{ overflow: 'visible' }}
 					>
 						{state_TourState?.stops.map((stop) => (
-							<SwiperSlide key={stop.id}>
-								<Button
-									variant="outlined"
-									className="p-0 px-4 text-sm  absolute bottom-full left-0 mb-1 bg-white"
-									onClick={() => handleStopCardClick(stop)}
+							<SwiperSlide key={stop.id} className="relative">
+								<Box
+									className="flex flex-col-reverse items-end absolute bottom-full right-0 mb-1mr-4"
+									sx={{ width: '100%' }}
 								>
-									פתח תחנה
-								</Button>
+									<Box className="flex-1">
+										{stop.all_media.find(
+											(media) => media.type === 'audio/mpeg'
+										) && (
+											<audio
+												controls
+												className="h-7 mt-1 mb-2"
+												style={{ width: '70vw' }}
+											>
+												<source
+													src={
+														stop.all_media.find(
+															(media) => media.type === 'audio/mpeg'
+														)?.url
+													}
+													type="audio/mpeg"
+												/>
+												Your browser does not support the audio element.
+											</audio>
+										)}
+									</Box>
+									<Button
+										variant="outlined"
+										className="p-0 px-4 mb-1 text-sm  bg-white w-max"
+										onClick={() => handleStopCardClick(stop)}
+									>
+										פתח תחנה
+									</Button>
+								</Box>
 								<motion.div
 									whileTap={{ scale: 0.9 }}
 									className="mb-4"

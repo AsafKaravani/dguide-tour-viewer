@@ -44,23 +44,57 @@ export const BigStopPage = React.memo(
 					<Typography variant="body2">{_p.stop.s_smallDesc}</Typography>
 					<Seperator />
 				</Box>
-				<Box className="flex flex-col gap-3">
-					{_p.stop.all_media.map((media) => {
+				<Box className="flex flex-col gap-10">
+					{_p.stop.all_media.map((media, i) => {
+						console.log(media.title);
 						console.log(media.type);
 						if (media.type === 'video/mp4')
 							return (
-								<ReactPlayer
-									key={media.order}
-									style={{ maxHeight: '40vh' }}
-									width="100%"
-									url={media.url}
-									controls
-									playing
-								/>
+								<Box key={media.order}>
+									<Typography className="p-4 pb-2">{media.title}</Typography>
+									<ReactPlayer
+										key={media.order}
+										style={{ maxHeight: '30vh' }}
+										width="100%"
+										url={media.url}
+										controls
+									/>
+								</Box>
+							);
+
+						if (media.type === 'audio/mpeg')
+							return (
+								<Box key={media.order}>
+									<Typography className="p-4 pb-2">{media.title}</Typography>
+									<ReactPlayer
+										key={media.order}
+										style={{ maxHeight: '30vh' }}
+										width="100%"
+										url={media.url}
+										controls
+									/>
+								</Box>
+							);
+
+						if (media.type === 'question')
+							return (
+								<Box className="p-4 pb-2" key={media.order}>
+									<Typography>{media.title}</Typography>
+									<Typography>{media.question_text}</Typography>
+									{media.options.map((option, i2) => (
+										<Typography key={i2}>{option.option}</Typography>
+									))}
+								</Box>
 							);
 
 						if (media.type === 'text')
-							return <Typography key={media.order}>{media.title}</Typography>;
+							return (
+								<Box className="p-4 pb-2" key={media.order}>
+									<Typography>{media.title}</Typography>
+									<Typography variant="body2">{media.content}</Typography>
+									<Seperator />
+								</Box>
+							);
 					})}
 				</Box>
 			</Box>

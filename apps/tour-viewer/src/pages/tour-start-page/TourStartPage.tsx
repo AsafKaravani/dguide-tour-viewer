@@ -22,7 +22,6 @@ export const TourStartPage = React.forwardRef<BoxProps, TourStartPageProps>(
 							width="100%"
 							url={_p.tour.exp_video}
 							controls
-							playing
 						/>
 					)}
 				</Box>

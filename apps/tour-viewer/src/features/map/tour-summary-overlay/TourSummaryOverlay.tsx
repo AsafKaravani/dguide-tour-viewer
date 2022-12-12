@@ -49,10 +49,9 @@ export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
 				)}
 				{state_tourState && !hidePage && (
 					<motion.div
-						key={'asdasd'}
 						className="fixed top-0 bottom-0 w-screen h-screen bg-white overflow-auto"
 						style={{ zIndex: 999999 }}
-						{...framerSlideLeft}
+						transition={{ ...framerSlideLeft, initial: { translateX: '0vw' } }}
 					>
 						<TourStartPage
 							onClickStart={() => {
@@ -66,7 +65,6 @@ export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
 				)}
 				{state_tourState && startTour && (
 					<motion.div
-						key={'asd'}
 						className="fixed top-0 bottom-0 w-screen h-screen bg-white overflow-auto"
 						style={{ zIndex: 999999 }}
 						{...framerSlideLeft}
@@ -86,7 +84,7 @@ export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
 					>
 						<BigStopPage
 							stop={state_openedStopState}
-							onClickBack={() => setState_openedStopState()}
+							onClickBack={() => setState_openedStopState(undefined)}
 						/>
 					</motion.div>
 				)}
