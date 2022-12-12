@@ -97,6 +97,7 @@ export const BigStopPage = React.memo(
 							);
 					})}
 				</Box>
+				<Box sx={{ height: '50vh' }}></Box>
 			</Box>
 		);
 	})
