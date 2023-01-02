@@ -29,8 +29,8 @@ export const OpeningStopBlock = React.memo(
 						רגע לפני שמתחילים, האם תרצו לנווט לנק' ההתחלה?
 					</Typography>
 					<Box className="flex gap-8 justify-center mb-4">
-						<img src="images/waze-icon.png" width={20} />
-						<img src="images/google-maps-icon.png" width={20} />
+						<img src="/images/waze-icon.png" width={20} />
+						<img src="/images/google-maps-icon.png" width={20} />
 					</Box>
 					<Button onClick={_p.onClickSkip} variant="text" fullWidth>
 						דלג

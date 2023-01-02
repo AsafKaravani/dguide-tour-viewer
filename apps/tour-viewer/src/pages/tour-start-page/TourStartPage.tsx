@@ -77,8 +77,8 @@ export const TourStartPage = React.forwardRef<BoxProps, TourStartPageProps>(
 							<Link href="#">שער יפו ירושלים...</Link>
 						</TourChip>
 						<Box className="flex gap-3 items-center">
-							<img src="images/waze-icon.png" width={20} />
-							<img src="images/google-maps-icon.png" width={20} />
+							<img src="/images/waze-icon.png" width={20} />
+							<img src="/images/google-maps-icon.png" width={20} />
 						</Box>
 					</Box>
 					<Seperator />

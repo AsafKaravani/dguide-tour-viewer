@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 		errorElement: <>404 Not Found</>,
 		children: [
 			{
-				path: '/:tourId',
+				path: 'tour/:tourId',
 				element: <MapPage />,
 			},
 			{

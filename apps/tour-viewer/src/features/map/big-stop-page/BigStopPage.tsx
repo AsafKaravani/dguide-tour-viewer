@@ -33,7 +33,7 @@ export const BigStopPage = React.memo(
 						))}
 					</Box>
 					<Button variant="text" className="p-0 w-10 h-10 min-w-min">
-						<img src="images/google-maps-icon.png" width={20} />
+						<img src="/images/google-maps-icon.png" width={20} />
 					</Button>
 				</Box>
 				<Box className="px-4">
