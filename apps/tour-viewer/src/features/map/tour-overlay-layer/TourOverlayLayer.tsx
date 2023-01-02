@@ -47,7 +47,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 					state_activeStopState?.stop_location.latitude,
 					state_activeStopState?.stop_location.longitude,
 				],
-				17,
+				18,
 				{
 					duration: 0.3,
 				}
@@ -127,7 +127,7 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
 									</Box>
 									<Button
 										variant="outlined"
-										className="p-0 px-4 mb-1 text-sm  bg-white w-max"
+										className="p-1 px-8 mb-1 text-sm bg-white w-max border-none"
 										onClick={() => handleStopCardClick(stop)}
 									>
 										פתח תחנה
