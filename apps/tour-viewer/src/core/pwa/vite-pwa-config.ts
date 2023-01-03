@@ -2,6 +2,9 @@ import { ManifestOptions, VitePWA, VitePWAOptions } from 'vite-plugin-pwa';
 
 export const vitePwaConfig = () => {
 	const pwaOptions: Partial<VitePWAOptions> = {
+		workbox: {
+			sourcemap: true
+		},	
 		mode: 'development',
 		base: '/',
 		includeAssets: ['favicon.svg'],
