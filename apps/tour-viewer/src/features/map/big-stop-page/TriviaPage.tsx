@@ -18,7 +18,7 @@ export const TriviaPage = React.memo(
     const [correctAnswer, setCorrectAnswer] = useState(-1);
 
     const handleSelect = () => {
-      question.options.map((option, idx) => {
+      question.options.map((option: any, idx: number) => {
         if (option.isAnswer) {
           setCorrectAnswer(idx);
         }
@@ -28,12 +28,14 @@ export const TriviaPage = React.memo(
     return (
       <Box ref={ref}>
         <Box
-          style={{
-            height: "100vh",
-            color: "white",
-            backgroundImage: `url(${backgroundImage})`,
-            "background-repeat-y": "no-repeat",
-          }}
+          style={
+            {
+              height: "100vh",
+              color: "white",
+              backgroundImage: `url(${backgroundImage})`,
+              "background-repeat-y": "no-repeat",
+            } as any
+          }
         >
           <Box className="flex justify-center pt-12 mb-3">
             <Typography color="white" className="center" variant="h1">
@@ -45,17 +47,20 @@ export const TriviaPage = React.memo(
               {question.question_text}
             </Typography>
           </Box>
-          {question?.options?.map((option, idx) => (
+          {question?.options?.map((option: any, idx: number) => (
             <Box
               className="pt-7 pb-7"
               onClick={handleSelect}
-              style={{
-                borderRadius: 10,
-                margin: 10,
-                color: "white",
-                background: idx % 2 === 0 ? "#FF725F" : "rgb(41, 230, 166)",
-                outline: correctAnswer === idx && "5px solid white",
-              }}
+              style={
+                {
+                  borderRadius: 10,
+                  margin: 10,
+                  color: "white",
+                  background: idx % 2 === 0 ? "#FF725F" : "rgb(41, 230, 166)",
+                  outline:
+                    correctAnswer === ((idx && "5px solid white") as any),
+                } as any
+              }
             >
               <Box className="flex justify-center">
                 <Typography color="white" className="center" variant="h2">

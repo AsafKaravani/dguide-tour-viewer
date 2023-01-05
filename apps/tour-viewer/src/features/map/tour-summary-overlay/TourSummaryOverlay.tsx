@@ -2,7 +2,7 @@ import { TourStartPage } from "@app/pages/tour-start-page/TourStartPage";
 import { atom_tourState } from "@app/shared/state/tour.atom";
 import { CircularProgress, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { OpeningStopBlock } from "@app/features/map/opening-stop-block/OpeningStopBlock";
 import { motion, AnimatePresence, HTMLMotionProps } from "framer-motion";
@@ -29,11 +29,16 @@ const framerSlideUpDown: HTMLMotionProps<"div"> = {
 
 export const TourSummaryOverlay: React.FC = React.memo<TourSummaryOverlayProps>(
   function TourSummaryOverlay(_p) {
-    const state_tourState = useRecoilValue(atom_tourState);
+    let state_tourState = useRecoilValue(atom_tourState) as any;
     const [hidePage, setHidePage] = useState(false);
     const [startTour, setStartTour] = useState(false);
     const [state_openedStopState, setState_openedStopState] =
       useRecoilState(atom_openedStopState);
+    useEffect(() => {
+      setTimeout(() => {
+        state_tourState = true;
+      }, 3000);
+    }, []);
     return (
       <AnimatePresence>
         {!state_tourState && (

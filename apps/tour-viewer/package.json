@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "storybook": "start-storybook -s ./src/assets -p 6006",
     "build-storybook": "build-storybook",
-    "deploy": "yarn build && firebase deploy"
+    "deploy": "yarn build && firebase deploy",
+    "dep": "firebase deploy"
   },
   "lint-staged": {
     "*.{js,ts,tsx, jsx}": [
