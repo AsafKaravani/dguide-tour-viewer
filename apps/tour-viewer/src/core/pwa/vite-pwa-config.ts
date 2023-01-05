@@ -4,6 +4,23 @@ export const vitePwaConfig = () => {
 	const pwaOptions: Partial<VitePWAOptions> = {
 		workbox: {
 			sourcemap: true
+		},
+		registerType: 'autoUpdate',
+		mode: 'development',
+		base: '/',
+		devOptions: {
+			enabled: true,
+			/* when using generateSW the PWA plugin will switch to classic */
+			type: 'module',
+		},
+	};
+
+	return VitePWA();
+};
+
+/**
+ * 		workbox: {
+			sourcemap: true
 		},	
 		mode: 'development',
 		base: '/',
@@ -33,24 +50,8 @@ export const vitePwaConfig = () => {
 		},
 		devOptions: {
 			enabled: true,
-			/* when using generateSW the PWA plugin will switch to classic */
+			/* when using generateSW the PWA plugin will switch to classic /
 			type: 'module',
 			navigateFallback: 'index.html',
 		},
-	};
-
-	const claims = true;
-	const selfDestroying = true;
-
-	pwaOptions.srcDir = 'src';
-	pwaOptions.filename = claims ? 'claims-sw.ts' : 'prompt-sw.ts';
-	pwaOptions.strategies = 'injectManifest';
-	(pwaOptions.manifest as Partial<ManifestOptions>).name = 'PWA Inject Manifest';
-	(pwaOptions.manifest as Partial<ManifestOptions>).short_name = 'PWA Inject';
-
-	if (claims) pwaOptions.registerType = 'autoUpdate';
-
-	if (selfDestroying) pwaOptions.selfDestroying = selfDestroying;
-
-	return VitePWA(pwaOptions);
-};
+ */

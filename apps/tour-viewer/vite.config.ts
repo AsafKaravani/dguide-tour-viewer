@@ -7,6 +7,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import { vitePwaConfig } from './src/core/pwa/vite-pwa-config';
 //@ts-ignore
 import { rollupReplaceConfig } from './src/core/pwa/rollup-replace-config';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
 	plugins: [
@@ -20,7 +21,15 @@ export default defineConfig({
 				},
 			],
 		}),
-		vitePwaConfig(),
+		VitePWA({
+			registerType: 'autoUpdate',
+			mode: 'development',
+			base: '/',
+			devOptions: {
+			  enabled: true,
+			  type: 'module'
+			}
+		  }),
 		rollupReplaceConfig(),
 	],
 	publicDir: './src/assets',
