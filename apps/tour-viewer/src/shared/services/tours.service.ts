@@ -10,13 +10,15 @@ import {
 
 export const getInitializedFirestore = (app: any) => {
   const firestore = getFirestore(app);
-
+  if (process.env.NODE_ENV === "development") {
+    return firestore;
+  }
   // only enable emulator if in dev mode, and we haven't already enabled it
   if (
     process.env.NODE_ENV === "development" &&
     (firestore as any)._getSettings().host === "firestore.googleapis.com"
   ) {
-    connectFirestoreEmulator(getFirestore(app), "127.0.0.1", 8080);
+    connectFirestoreEmulator(getFirestore(app), "127.0.0.1", 5173);
     console.log("Firestore emulator attached!");
   }
 

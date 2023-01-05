@@ -57,8 +57,7 @@ export const TriviaPage = React.memo(
                   margin: 10,
                   color: "white",
                   background: idx % 2 === 0 ? "#FF725F" : "rgb(41, 230, 166)",
-                  outline:
-                    correctAnswer === ((idx && "5px solid white") as any),
+                  outline: correctAnswer === idx && "5px solid white",
                 } as any
               }
             >

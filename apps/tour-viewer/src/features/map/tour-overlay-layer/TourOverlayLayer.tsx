@@ -98,59 +98,63 @@ export const TourOverlayLayer: React.FC = React.memo<TourOverlayLayerProps>(
             onSlideChange={(swiper) => handleSwipe(swiper.activeIndex)}
             style={{ overflow: "visible" }}
           >
-            {state_TourState?.stops.map((stop) => (
-              <SwiperSlide key={stop.id} className="relative">
-                <Box
-                  className="flex flex-col-reverse items-end absolute bottom-full right-0 mb-1mr-4"
-                  sx={{ width: "100%" }}
-                >
-                  <Box className="flex-1">
-                    {stop.all_media.find(
-                      (media) => media.type === "audio/mpeg"
-                    ) && (
-                      <audio
-                        controls
-                        className="h-7 mt-1 mb-2"
-                        style={{ width: "70vw" }}
-                      >
-                        <source
-                          src={
-                            stop.all_media.find(
-                              (media) => media.type === "audio/mpeg"
-                            )?.url
-                          }
-                          type="audio/mpeg"
-                        />
-                        Your browser does not support the audio element.
-                      </audio>
-                    )}
-                  </Box>
-                  <Button
-                    variant="outlined"
-                    className="p-1 px-8 mb-1 text-sm bg-white w-max border-none"
-                    onClick={() => handleStopCardClick(stop)}
+            {state_TourState?.stops
+              .filter(
+                (stop) => stop.type === "bigStop" || stop.type == "business"
+              )
+              .map((stop) => (
+                <SwiperSlide key={stop.id} className="relative">
+                  <Box
+                    className="flex flex-col-reverse items-end absolute bottom-full right-0 mb-1mr-4"
+                    sx={{ width: "100%" }}
                   >
-                    פתח תחנה
-                  </Button>
-                </Box>
-                <motion.div
-                  whileTap={{ scale: 0.9 }}
-                  className="mb-4"
-                  style={{ marginInlineStart: 12 }}
-                  dragElastic
-                >
-                  <StopCard
-                    onClick={() => zoomToStop(stop)}
-                    sx={{ width: "100%", height: "15vh" }}
-                    title={stop.s_title}
-                    image_src={
-                      stop.loc_pics?.length ? stop.loc_pics[0].url : ""
-                    }
-                    categories={stop.tags}
-                  />
-                </motion.div>
-              </SwiperSlide>
-            ))}
+                    <Box className="flex-1">
+                      {stop.all_media.find(
+                        (media) => media.type === "audio/mpeg"
+                      ) && (
+                        <audio
+                          controls
+                          className="h-7 mt-1 mb-2"
+                          style={{ width: "70vw" }}
+                        >
+                          <source
+                            src={
+                              stop.all_media.find(
+                                (media) => media.type === "audio/mpeg"
+                              )?.url
+                            }
+                            type="audio/mpeg"
+                          />
+                          Your browser does not support the audio element.
+                        </audio>
+                      )}
+                    </Box>
+                    <Button
+                      variant="outlined"
+                      className="p-1 px-8 mb-1 text-sm bg-white w-max border-none"
+                      onClick={() => handleStopCardClick(stop)}
+                    >
+                      פתח תחנה
+                    </Button>
+                  </Box>
+                  <motion.div
+                    whileTap={{ scale: 0.9 }}
+                    className="mb-4"
+                    style={{ marginInlineStart: 12 }}
+                    dragElastic
+                  >
+                    <StopCard
+                      onClick={() => zoomToStop(stop)}
+                      sx={{ width: "100%", height: "15vh" }}
+                      title={stop.s_title}
+                      image_src={
+                        stop.loc_pics?.length ? stop.loc_pics[0].url : ""
+                      }
+                      categories={stop.tags}
+                    />
+                  </motion.div>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </Box>
       </Box>
